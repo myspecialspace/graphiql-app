@@ -11,6 +11,13 @@ module.exports = {
   plugins: ["react-refresh"],
   rules: {
     "react-refresh/only-export-components": "warn",
-    "quotes": [2, "single", { "avoidEscape": true }]
+    quotes: [
+      2,
+      "single",
+      {
+        avoidEscape: true,
+      },
+    ],
+    "@typescript-eslint/no-non-null-assertion": "off",
   },
 };

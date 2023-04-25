@@ -10,9 +10,9 @@ interface Props {
 export const ProtectedRoute: FC<Props> = ({ element }) => {
   const user = {};
 
-  if(!user) {
-    return <Navigate to="/login" />
+  if (!user) {
+    return <Navigate to="/login" />;
   }
 
   return element;
-}
+};

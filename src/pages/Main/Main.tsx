@@ -1,5 +1,5 @@
-import { FC } from 'react'
+import { FC } from 'react';
 
 export const MainPage: FC = () => {
-  return <div>Main page</div>
-}
+  return <div>Main page</div>;
+};

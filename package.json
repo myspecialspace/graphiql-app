@@ -8,8 +8,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "prettier": "npx prettier --write .",
-    "lint": "eslint src --ext .ts,.tsx",
-    "lint-fix": "eslint src --ext .ts,.tsx --fix",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint-fix": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },
@@ -20,9 +20,10 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
-    "react-i18next": "^12.2.2",
+    "react-i18next": "^12.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.10.0",
+    "vite-tsconfig-paths": "^4.2.0",
     "yup": "^1.1.1"
   },
   "devDependencies": {

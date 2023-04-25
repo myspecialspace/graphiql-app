@@ -1,10 +1,7 @@
-import { useTranslation } from 'react-i18next';
 import './App.css';
-import '@/i18n/config';
+import { FC } from 'react';
+import { AppRouter } from './router/Router';
 
-function App() {
-  const { t } = useTranslation();
-  return <h1 className="text-3xl font-bold underline">{t('Привет мир')}</h1>;
-}
-
-export default App;
+export const App: FC = () => {
+  return <AppRouter />;
+};
