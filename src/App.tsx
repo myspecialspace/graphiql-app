@@ -1,4 +1,3 @@
-import './App.css';
 import { FC } from 'react';
 import { AppRouter } from './router/Router';
 
