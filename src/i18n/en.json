@@ -1,3 +1,6 @@
 {
-  "greeting": "Hello world"
+  "notFound": "Page not found",
+  "sorry": "Sorry, we couldn’t find the page you’re looking for.",
+  "goHome": "Go back home",
+  "support": "Contact support"
 }
