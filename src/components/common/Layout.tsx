@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import { Footer } from './Footer/Footer';
+import { Footer } from '../Footer/Footer';
+import { Header } from '../Header/Header';
 
 interface Props {
   children: JSX.Element;
@@ -7,7 +8,7 @@ interface Props {
 export const Layout: FC<Props> = ({ children }) => {
   return (
     <div className="flex flex-col h-full">
-      <header className="h-16 bg-slate-200 shrink-0 sticky top-0 left-0"></header>
+      <Header />
       <div className="content grow">{children}</div>
       <Footer />
     </div>
