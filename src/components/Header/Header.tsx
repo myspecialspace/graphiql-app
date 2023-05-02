@@ -12,8 +12,8 @@ export const Header: FC = () => {
           <Link to="/">GraphiQl</Link>
         </div>
         <div className="flex px-4">
-          <HeaderButton text={t('signIn')} />
-          <HeaderButton text={t('signUp')} />
+          <HeaderButton text={t('signIn')} path="/signin" />
+          <HeaderButton text={t('signUp')} path="/signup" />
         </div>
       </div>
     </header>
