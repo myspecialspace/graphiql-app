@@ -10,5 +10,7 @@
   "inputPassword": "Input password",
   "login": "Sign In",
   "haveAccount": "Don’t have an account?",
-  "register": "Register"
+  "register": "Register",
+  "signUpTitle": "Sign up for your account",
+  "enterName": "Enter your name"
 }
