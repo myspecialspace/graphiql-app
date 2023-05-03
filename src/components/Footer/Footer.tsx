@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { GithubIcon } from '../GithubIcon';
-import { RSSchoolIcon } from '../RSSchoolIcon';
+import { GithubIcon } from '../common/GithubIcon';
+import { RSSchoolIcon } from '../common/RSSchoolIcon';
 
 export const Footer: FC = () => {
   return (
