@@ -4,5 +4,13 @@
   "goHome": "Go back home",
   "support": "Contact support",
   "signIn": "Sign In",
-  "signUp": "Sign Up"
+  "signUp": "Sign Up",
+  "loginTitle": "Log in to your account",
+  "inputEmail": "Input E-mail",
+  "inputPassword": "Input password",
+  "login": "Sign In",
+  "haveAccount": "Don’t have an account?",
+  "register": "Register",
+  "signUpTitle": "Sign up for your account",
+  "enterName": "Enter your name"
 }
