@@ -56,6 +56,11 @@ export const SignupForm: FC = () => {
                 value: 8,
                 message: t('error'),
               },
+              pattern: {
+                value:
+                /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@])[A-Za-z\d@$!%*#?&]{8,}$/,
+                message: t('error'),
+              },
             })}
             className="form__input"
             placeholder="Enter E-mail..."
@@ -72,6 +77,11 @@ export const SignupForm: FC = () => {
               required: 'Please input your password!',
               minLength: {
                 value: 8,
+                message: t('error'),
+              },
+              pattern: {
+                value:
+                  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
                 message: t('error'),
               },
             })}

@@ -39,9 +39,14 @@ export const SigninForm: FC = () => {
                 value: 8,
                 message: t('error'),
               },
+              pattern: {
+                value:
+                  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@])[A-Za-z\d@$!%*#?&]{8,}$/,
+                message: t('error'),
+              },
             })}
             className="form__input"
-            placeholder='Input you email...'
+            placeholder="Input you email..."
           />
           <div className="form__error">
             {errors?.inputEmail && (
@@ -57,9 +62,14 @@ export const SigninForm: FC = () => {
                 value: 8,
                 message: t('error'),
               },
+              pattern: {
+                value:
+                  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+                message: t('error'),
+              },
             })}
             className="form__input"
-            placeholder='Input your password...'
+            placeholder="Input your password..."
           />
           <div className="form__error">
             {errors?.password && <p>{errors?.password?.message || 'Error!'}</p>}
