@@ -41,10 +41,11 @@ export const SigninForm: FC = () => {
               },
               pattern: {
                 value:
-                  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@])[A-Za-z\d@$!%*#?&]{8,}$/,
+                  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&.,])[A-Za-z\d@$!%*#?&.,]{8,}$/,
                 message: t('error'),
               },
             })}
+            type="email"
             className="form__input"
             placeholder="Input you email..."
           />
@@ -64,10 +65,11 @@ export const SigninForm: FC = () => {
               },
               pattern: {
                 value:
-                  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+                  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&.,])[A-Za-z\d@$!%*#?&.,]{8,}$/,
                 message: t('error'),
               },
             })}
+            type="password"
             className="form__input"
             placeholder="Input your password..."
           />
