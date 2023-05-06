@@ -14,7 +14,7 @@
   "register": "Register",
   "signUpTitle": "Sign up for your account",
   "enterName": "Enter your name",
-  "continue": "Continue",
+  "registerContinue": "Continue",
   "haveAccount": "Already have an account?",
   "logIn": "Log in"
 }

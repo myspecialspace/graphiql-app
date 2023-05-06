@@ -83,7 +83,7 @@ export const SignupForm: FC = () => {
           </div>
         </label>
         <button type="submit" className="form__button">
-          {t('continue')}
+          {t('registerContinue')}
         </button>
         <div className="border mt-4"></div>
         <div>
@@ -92,7 +92,7 @@ export const SignupForm: FC = () => {
           </span>
           <Link
             to="/signin"
-            className="text-purple-900 font-bold cursor-pointer hover:text-purple-500"
+            className="text-purple-900 text-sm font-bold cursor-pointer hover:text-purple-500"
           >
             {t('logIn')}
           </Link>
