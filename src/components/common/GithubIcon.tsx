@@ -3,7 +3,7 @@ import { FC } from 'react';
 export const GithubIcon: FC = () => {
   return (
     <svg
-      enable-background="new 0 0 1024 1024"
+      enableBackground="new 0 0 1024 1024"
       height="1024px"
       id="Layer_1"
       version="1.1"
@@ -16,7 +16,7 @@ export const GithubIcon: FC = () => {
     >
       <g>
         <path
-          clip-rule="evenodd"
+          clipRule="evenodd"
           d="M667.575,684.036c29.498,42.729,31.01,91.438,30.54,140.826
               c-0.57,59.8-0.111,119.604-0.05,179.408c0.022,19.207-0.445,19.731-19.1,19.729c-78.256-0.012-156.512-0.005-234.769-0.007
               c-17.454,0-19.02-1.667-18.996-19.188c0.055-38.141,0.018-76.282,0.018-116.467c-13.499,1.382-27.038,2.831-40.589,4.143

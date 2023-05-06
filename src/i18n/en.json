@@ -8,9 +8,13 @@
   "loginTitle": "Log in to your account",
   "inputEmail": "Input E-mail",
   "inputPassword": "Input password",
+  "error": "Should be minimum 8 symbols, at least one letter, one digit, one special character",
   "login": "Sign In",
-  "haveAccount": "Don’t have an account?",
+  "notAccount": "Don’t have an account?",
   "register": "Register",
   "signUpTitle": "Sign up for your account",
-  "enterName": "Enter your name"
+  "enterName": "Enter your name",
+  "continue": "Continue",
+  "haveAccount": "Already have an account?",
+  "logIn": "Log in"
 }
