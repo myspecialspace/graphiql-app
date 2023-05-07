@@ -17,6 +17,61 @@ export const WelcomePage: FC = () => {
             {t('about')}
           </p>
         </section>
+        <section className="my-5">
+          <h2 className="mb-20 text-4xl font-extrabold text-fuchsia-950">
+            {t('developers')}
+          </h2>
+          <div className="flex">
+            <div className="flex flex-col items-center w-1/3">
+              <img
+                className="rounded-full"
+                src="https://avatars.githubusercontent.com/u/6096602?v=4"
+                alt="photo"
+                width="100px"
+                height="100px"
+              />
+              <h3 className="font-semibold text-gray-600">{t('teamLead')}</h3>
+              <p className="font-bold text-gray-900">{t('name_1')}</p>
+              <div className="flex justify-center">
+                <small className="italic text-gray-600">(myspecialspace)</small>
+              </div>
+              <p className="text-purple-900">
+                {t('aboutDeveloper_1')} <br />
+                {t('aboutDeveloper_2')}
+              </p>
+            </div>
+            <div className="flex flex-col items-center w-1/3">
+              <img
+                className="rounded-full"
+                src=""
+                alt="photo"
+                width="100px"
+                height="100px"
+              />
+              <h3 className="font-semibold text-gray-600">{t('developer')}</h3>
+              <p className="font-bold text-gray-900"> {t('name_2')}</p>
+              <div className="flex justify-center">
+                <small className="italic text-gray-600">(Clearenough)</small>
+              </div>
+              <p className="text-purple-900">{t('aboutDeveloper_3')}</p>
+            </div>
+            <div className="flex flex-col items-center w-1/3">
+              <img
+                className="rounded-full"
+                src="https://avatars.githubusercontent.com/u/68753041?s=400&u=15b40651dda5853b8d12859960611dfe8c36ba13&v=4"
+                alt="photo"
+                width="100px"
+                height="100px"
+              />
+              <h3 className="font-semibold text-gray-600">{t('developer')}</h3>
+              <p className="font-bold text-gray-900">{t('name_3')}</p>
+              <div className="flex justify-center items-center">
+                <small className="italic text-gray-600">(ElizabethT7)</small>
+              </div>
+              <p className="text-purple-900">{t('aboutDeveloper_4')}</p>
+            </div>
+          </div>
+        </section>
       </div>
     </Layout>
   );
