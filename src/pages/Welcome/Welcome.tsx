@@ -21,8 +21,8 @@ export const WelcomePage: FC = () => {
           <h2 className="mb-20 text-4xl font-extrabold text-fuchsia-950">
             {t('developers')}
           </h2>
-          <div className="flex">
-            <div className="flex flex-col items-center w-1/3">
+          <div className="flex flex-col sm:flex-row">
+            <div className="flex flex-col items-center w-3/3 sm:w-1/3 p-3">
               <img
                 className="rounded-full"
                 src="https://avatars.githubusercontent.com/u/6096602?v=4"
@@ -40,7 +40,7 @@ export const WelcomePage: FC = () => {
                 {t('aboutDeveloper_2')}
               </p>
             </div>
-            <div className="flex flex-col items-center w-1/3">
+            <div className="flex flex-col items-center w-3/3 sm:w-1/3 p-3">
               <img
                 className="rounded-full"
                 src=""
@@ -55,7 +55,7 @@ export const WelcomePage: FC = () => {
               </div>
               <p className="text-purple-900">{t('aboutDeveloper_3')}</p>
             </div>
-            <div className="flex flex-col items-center w-1/3">
+            <div className="flex flex-col items-center w-3/3 sm:w-1/3 p-3">
               <img
                 className="rounded-full"
                 src="https://avatars.githubusercontent.com/u/68753041?s=400&u=15b40651dda5853b8d12859960611dfe8c36ba13&v=4"
