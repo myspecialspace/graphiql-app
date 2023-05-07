@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-interface ErrorsInterface {
+interface SignInFormInterface {
   inputEmail: string;
   password: string;
 }
@@ -14,13 +14,14 @@ export const SigninForm: FC = () => {
     formState: { errors },
     handleSubmit,
     reset,
-  } = useForm<ErrorsInterface>({
+  } = useForm<SignInFormInterface>({
     mode: 'onBlur',
   });
 
   const { t } = useTranslation<string>();
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: SignInFormInterface) => {
+    console.log(data);
     console.log(JSON.stringify(data));
     reset();
   };
