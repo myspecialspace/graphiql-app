@@ -11,6 +11,7 @@
   "notAccount": "Не удается войти?",
   "register": "Зарегистрировать аккаунт",
   "signUpTitle": "Регистрация аккаунта",
+  "enterName": "Введите имя...",
   "registerContinue": "Продолжить",
   "haveAccount": "Уже есть аккаунт?",
   "logIn": "Войти"
