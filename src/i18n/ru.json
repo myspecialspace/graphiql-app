@@ -4,5 +4,14 @@
   "goHome": "Вернуться на главную страницу",
   "support": "Обратиться в службу поддержки",
   "signIn": "Войти",
-  "signUp": "Зарегистрироваться"
+  "signUp": "Зарегистрироваться",
+  "loginTitle": "Вход в GraphiQl",
+  "error": "Should be minimum 8 symbols, at least one letter, one digit, one special character",
+  "login": "Войти",
+  "notAccount": "Не удается войти?",
+  "register": "Зарегистрировать аккаунт",
+  "signUpTitle": "Регистрация аккаунта",
+  "registerContinue": "Продолжить",
+  "haveAccount": "Уже есть аккаунт?",
+  "logIn": "Войти"
 }

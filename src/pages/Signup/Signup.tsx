@@ -4,7 +4,7 @@ import { SignupForm } from '@/components/Forms/SignupForm';
 
 export const SignupPage: FC = () => {
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col item-center justify-between h-full mx-4">
       <SignupForm />
       <Footer />
     </div>

@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 interface ErrorsInterface {
   inputEmail: string;
@@ -12,47 +13,85 @@ export const SigninForm: FC = () => {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<ErrorsInterface>();
+    reset,
+  } = useForm<ErrorsInterface>({
+    mode: 'onBlur',
+  });
 
-  const { t } = useTranslation();
+  const { t } = useTranslation<string>();
 
   const onSubmit = (data: any) => {
     console.log(JSON.stringify(data));
+    reset();
   };
 
   return (
-    <div className="flex flex-col">
-      <h3>{t('loginTitle')}</h3>
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
-        <label htmlFor="">
-          {t('inputEmail')}
+    <div className="flex flex-col items-center my-5">
+      <h2 className="text-2xl text-purple-900 font-bold my-4">
+        {t('loginTitle')}
+      </h2>
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-80">
+        <label htmlFor="inputEmail">
           <input
             {...register('inputEmail', {
               required: 'Please input your E-mail!',
               minLength: {
                 value: 8,
-                message: 'E-mail should be minimum 8 symbols',
+                message: t('error'),
+              },
+              pattern: {
+                value:
+                  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&.,])[A-Za-z\d@$!%*#?&.,]{8,}$/,
+                message: t('error'),
               },
             })}
+            type="email"
+            className="form__input"
+            placeholder="Input you email..."
           />
-          {errors?.inputEmail && (
-            <p>{errors?.inputEmail?.message || 'Error!'}</p>
-          )}
+          <div className="form__error">
+            {errors?.inputEmail && (
+              <p>{errors?.inputEmail?.message || 'Error!'}</p>
+            )}
+          </div>
         </label>
-        <label htmlFor="">
-          {t('inputPassword')}
+        <label htmlFor="inputPassword">
           <input
             {...register('password', {
               required: 'Please input your password!',
               minLength: {
                 value: 8,
-                message: ' E-mail should be minimum 8 symbols',
+                message: t('error'),
+              },
+              pattern: {
+                value:
+                  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&.,])[A-Za-z\d@$!%*#?&.,]{8,}$/,
+                message: t('error'),
               },
             })}
+            type="password"
+            className="form__input"
+            placeholder="Input your password..."
           />
-          {errors?.password && <p>{errors?.password?.message || 'Error!'}</p>}
+          <div className="form__error">
+            {errors?.password && <p>{errors?.password?.message || 'Error!'}</p>}
+          </div>
         </label>
-        <button type="submit">Submit</button>
+        <button type="submit" className="form__button">
+          {t('login')}
+        </button>
+        <div className="border mt-4"></div>
+        <div className="">
+          <span className="text-purple-900 text-sm mr-2">
+            {t('notAccount')}
+          </span>
+          <Link
+            to="/signup"
+            className="text-purple-900 text-sm font-bold cursor-pointer hover:text-purple-500"
+          >
+            {t('register')}
+          </Link>
+        </div>
       </form>
     </div>
   );
