@@ -1,22 +1,18 @@
 import ReactCodeMirror from '@uiw/react-codemirror';
-import debounce from 'lodash.debounce';
 import { graphql } from 'cm6-graphql';
-import { useState } from 'react';
+import useDebounceState from '../../hooks/useDebounceState';
 
 export const QueryEditor = () => {
-  const [value, setValue] = useState<string>();
-
-  const debouceSetValue = debounce((value: string) => {
-    setValue(value);
-  }, 500);
+  const [stateValue, debounceSetState] = useDebounceState<string>();
 
   const onChange = (value: string) => {
-    debouceSetValue(value);
+    debounceSetState(value);
+    console.log(stateValue);
   };
 
   return (
     <ReactCodeMirror
-      value={value}
+      value={stateValue}
       theme="dark"
       placeholder={'Type a Query'}
       basicSetup={true}
