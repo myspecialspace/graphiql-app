@@ -4,7 +4,7 @@ import { RSSchoolIcon } from '../common/RSSchoolIcon';
 
 export const Footer: FC = () => {
   return (
-    <footer className="flex h-10">
+    <footer className="flex h-10 pb-5">
       <div className="flex flex-row my-0 mx-auto px-15">
         <div className="flex flex-row px-5">
           <a href="https://github.com/Clearenough">
