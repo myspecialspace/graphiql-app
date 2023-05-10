@@ -1,4 +1,6 @@
 {
+  "en": "Английский",
+  "ru": "Русский",
   "about": "GraphiQL - IDE для запросов GraphQL и создания интерактивных графических компонентов интерфейсных фреймворков.",
   "developers": "Разработчики",
   "teamLead": "Руководитель",
@@ -17,7 +19,7 @@
   "signIn": "Войти",
   "signUp": "Зарегистрироваться",
   "loginTitle": "Вход в GraphiQl",
-  "error": "Should be minimum 8 symbols, at least one letter, one digit, one special character",
+  "error": "Минимум 8 символов, по крайней мере одна буква, одна цифра, один специальный символ",
   "login": "Войти",
   "notAccount": "Не удается войти?",
   "register": "Зарегистрировать аккаунт",

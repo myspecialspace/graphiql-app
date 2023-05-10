@@ -1,4 +1,6 @@
 {
+  "en": "English",
+  "ru": "Russian",
   "about": "GraphiQL -  IDE to generate interactive Graphical components for front end frameworks.",
   "developers": "Developers",
   "teamLead": "Team leader",
