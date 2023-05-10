@@ -7,7 +7,6 @@ export const QueryEditor = () => {
 
   const onChange = (value: string) => {
     debounceSetState(value);
-    console.log(stateValue);
   };
 
   return (
