@@ -2,6 +2,6 @@ import PrivateRoutes from './PrivateRoutes';
 import PublicRoutes from './PublicRoutes';
 
 export const AppRouter = () => {
-  const user = false;
+  const user = true;
   return user ? <PrivateRoutes /> : <PublicRoutes />;
 };
