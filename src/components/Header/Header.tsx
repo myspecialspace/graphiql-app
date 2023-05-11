@@ -9,7 +9,7 @@ export const Header: FC = () => {
     <header className="h-16 bg-slate-200 shrink-0 sticky top-0 left-0">
       <div className="flex flex-row items-center justify-between  h-full">
         <div className="logo px-4">
-          <Link to="/">GraphiQl</Link>
+          <Link to="/">GraphiQL</Link>
         </div>
         <div className="flex px-4">
           <HeaderButton text={t('signIn')} path="/signin" />
