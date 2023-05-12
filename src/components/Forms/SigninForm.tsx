@@ -1,10 +1,12 @@
+import { MAIN_ROUTE } from '@/helpers/constants';
+import { useAuth } from '@/store/hooks/auth';
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface ErrorsInterface {
-  inputEmail: string;
+  email: string;
   password: string;
 }
 
@@ -17,12 +19,19 @@ export const SigninForm: FC = () => {
   } = useForm<ErrorsInterface>({
     mode: 'onBlur',
   });
+  //достаем хук
+  const auth = useAuth();
+  const navigate = useNavigate();
 
   const { t } = useTranslation<string>();
 
-  const onSubmit = (data: any) => {
-    console.log(JSON.stringify(data));
-    reset();
+  const onSubmit = async (data: any) => {
+    await auth.signIn({ email: data.email, password: data.password });
+
+    if (auth.isLoggedIn) {
+      reset();
+      navigate(MAIN_ROUTE);
+    }
   };
 
   return (
@@ -31,9 +40,9 @@ export const SigninForm: FC = () => {
         {t('loginTitle')}
       </h2>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-80">
-        <label htmlFor="inputEmail">
+        <label htmlFor="email">
           <input
-            {...register('inputEmail', {
+            {...register('email', {
               required: 'Please input your E-mail!',
               minLength: {
                 value: 8,
@@ -50,9 +59,7 @@ export const SigninForm: FC = () => {
             placeholder="Input you email..."
           />
           <div className="form__error">
-            {errors?.inputEmail && (
-              <p>{errors?.inputEmail?.message || 'Error!'}</p>
-            )}
+            {errors?.email && <p>{errors?.email?.message || 'Error!'}</p>}
           </div>
         </label>
         <label htmlFor="inputPassword">
