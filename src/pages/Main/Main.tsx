@@ -6,7 +6,7 @@ export const MainPage: FC = () => {
   const [response, setResponse] = useState<string>('');
 
   return (
-    <div>
+    <div className="flex">
       <QueryEditor setResponse={setResponse} />
       <QueryResponse response={response} />
     </div>
