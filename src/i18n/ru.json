@@ -5,6 +5,7 @@
   "support": "Обратиться в службу поддержки",
   "signIn": "Войти",
   "signUp": "Зарегистрироваться",
+  "signOut": "Выйти",
   "loginTitle": "Вход в GraphiQL",
   "error": "Should be minimum 8 symbols, at least one letter, one digit, one special character",
   "login": "Войти",

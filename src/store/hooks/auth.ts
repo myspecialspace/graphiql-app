@@ -25,13 +25,13 @@ export const useAuth = () => {
   const signUp = (data: SignUpData) =>
     createUserWithEmailAndPassword(firebaseAuth, data.email, data.password);
 
-  // const signOut = () => firebaseAuth.signOut();
+  const signOut = () => firebaseAuth.signOut();
 
   return {
     isLoggedIn: state.isLoggedIn,
     pending: state.status === RequestStatus.PENDING,
     signIn,
     signUp,
-    // signOut,
+    signOut,
   };
 };
