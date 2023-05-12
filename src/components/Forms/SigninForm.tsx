@@ -25,7 +25,8 @@ export const SigninForm: FC = () => {
 
   const { t } = useTranslation<string>();
 
-  const onSubmit = async (data: any) => {
+
+  const onSubmit = async (data: ErrorsInterface) => {
     await auth.signIn({ email: data.email, password: data.password });
 
     if (auth.isLoggedIn) {

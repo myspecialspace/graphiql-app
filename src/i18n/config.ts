@@ -13,7 +13,7 @@ export const resources = {
 };
 
 i18next.use(initReactI18next).init({
-  lng: 'ru',
+  lng: 'en',
   debug: true,
   resources,
 });

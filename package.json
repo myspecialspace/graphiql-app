@@ -14,11 +14,21 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@monaco-editor/react": "^4.5.1",
     "@reduxjs/toolkit": "^1.9.5",
+    "@types/lodash": "^4.14.194",
+    "@types/react-codemirror": "^1.0.8",
+    "@uiw/react-codemirror": "^4.19.16",
     "axios": "^1.3.6",
     "classnames": "^2.3.2",
     "firebase": "^9.21.0",
+    "cm6-graphql": "^0.0.6",
+    "i": "^0.3.7",
     "i18next": "^22.4.15",
+    "lodash.debounce": "^4.0.8",
+    "monaco-editor": "^0.38.0",
+    "monaco-graphql": "^1.2.1",
+    "npm": "^9.6.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.1.1",
@@ -30,6 +40,7 @@
     "yup": "^1.1.1"
   },
   "devDependencies": {
+    "@types/lodash.debounce": "^4.0.7",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.57.1",

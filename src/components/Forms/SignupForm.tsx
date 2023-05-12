@@ -24,7 +24,7 @@ export const SignupForm: FC = () => {
   const { t } = useTranslation<string>();
   const navigate = useNavigate();
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: ErrorsInterface) => {
     await auth.signUp({
       email: data.email,
       password: data.password,
