@@ -1,6 +1,14 @@
 import { QueryEditor } from '@/components/QueryEditor/QueryEditor';
-import { FC } from 'react';
+import QueryResponse from '@/components/QueryResponse/QueryResponse';
+import { FC, useState } from 'react';
 
 export const MainPage: FC = () => {
-  return <QueryEditor />;
+  const [response, setResponse] = useState<string>('');
+
+  return (
+    <div>
+      <QueryEditor setResponse={setResponse} />
+      <QueryResponse response={response} />
+    </div>
+  );
 };
