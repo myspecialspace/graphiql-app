@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 
-interface ErrorsInterface {
+interface SignInFormInterface {
   email: string;
   password: string;
 }
@@ -16,7 +16,7 @@ export const SigninForm: FC = () => {
     formState: { errors },
     handleSubmit,
     reset,
-  } = useForm<ErrorsInterface>({
+  } = useForm<SignInFormInterface>({
     mode: 'onBlur',
   });
   //достаем хук
@@ -25,7 +25,7 @@ export const SigninForm: FC = () => {
 
   const { t } = useTranslation<string>();
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: SignInFormInterface) => {
     await auth.signIn({ email: data.email, password: data.password });
 
     if (auth.isLoggedIn) {
