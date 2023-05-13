@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { HeaderButton } from '../common/HeaderButton';
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/store/hooks/auth';
+import { SelectLanguage } from '../common/SelectLanguage';
 
 export const Header: FC = () => {
   const { t } = useTranslation();
@@ -18,10 +19,17 @@ export const Header: FC = () => {
     }
 
     if (auth.isLoggedIn) {
-      return <HeaderButton text={t('signOut')} onClick={onLogout} />;
+      return (
+        <>
+          <SelectLanguage />
+          <HeaderButton text={t('goToMain')} path="/main" />
+          <HeaderButton text={t('signOut')} onClick={onLogout} />
+        </>
+      );
     } else {
       return (
         <>
+          <SelectLanguage />
           <HeaderButton text={t('signIn')} path="/signin" />
           <HeaderButton text={t('signUp')} path="/signup" />
         </>
