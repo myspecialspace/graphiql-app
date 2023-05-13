@@ -2,8 +2,10 @@ import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SchemaButton } from '../common/SchemaButton';
 
+
 export const Aside: FC = () => {
-  const [title, setTitle] = useState('Docs')
+  const [title, setTitle] = useState('Docs');
+  //const [result, setResult] = useState();
   const { t } = useTranslation();
 
   return (
@@ -13,7 +15,11 @@ export const Aside: FC = () => {
       <div>Icon <span> Root Types</span></div>
       <div>
         <span className='text-purple-800 font-semibold'>query: </span>
-        <SchemaButton text="Query" onClick={() => setTitle('Query')}/>
+        {
+          //result &&
+          <SchemaButton text=/*{result.data.__schema.queryType.name}*/'Query' onClick={() => setTitle(/*{result.data.__schema.queryType.name}*/'Query')}/>
+        }
+      
       </div>
     </section>
   )
