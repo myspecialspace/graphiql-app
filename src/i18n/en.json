@@ -30,5 +30,6 @@
   "enterName": "Enter your name...",
   "registerContinue": "Continue",
   "haveAccount": "Already have an account?",
-  "logIn": "Log in"
+  "logIn": "Log in",
+  "goToMain": "Go to Main"
 }
