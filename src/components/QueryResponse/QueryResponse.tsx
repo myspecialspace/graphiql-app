@@ -1,15 +1,19 @@
+import ReactCodeMirror from '@uiw/react-codemirror';
+import { json } from '@codemirror/lang-json';
+
 interface QueryResponseProps {
   response: string;
 }
 
 const QueryResponse = ({ response }: QueryResponseProps) => {
   return (
-    <textarea
-      name=""
-      id=""
-      cols={100}
-      rows={10}
-      defaultValue={response}
+    <ReactCodeMirror
+      value={response}
+      theme="dark"
+      placeholder={'Type a Query'}
+      basicSetup={true}
+      extensions={[json()]} // graphql schema
+      width={'500px'}
       readOnly
     />
   );
