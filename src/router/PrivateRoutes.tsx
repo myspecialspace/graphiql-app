@@ -9,8 +9,14 @@ const PrivateRoutes = () => {
     <Routes>
       <Route path="/" element={<WelcomePage />} />
       <Route path={MAIN_ROUTE} element={<MainPage />} />
-      <Route path={SIGNUP_ROUTE} element={<Navigate to={MAIN_ROUTE} />} />
-      <Route path={SIGNIN_ROUTE} element={<Navigate to={MAIN_ROUTE} />} />
+      <Route
+        path={SIGNUP_ROUTE}
+        element={<Navigate to={MAIN_ROUTE} replace />}
+      />
+      <Route
+        path={SIGNIN_ROUTE}
+        element={<Navigate to={MAIN_ROUTE} replace />}
+      />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
