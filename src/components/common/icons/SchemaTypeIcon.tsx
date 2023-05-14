@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-export const SchemaWaveIcon: FC = () => {
+export const SchemaTypeIcon: FC = () => {
   return (
     <svg
       height="1em"
@@ -8,7 +8,7 @@ export const SchemaWaveIcon: FC = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <title>root type icon</title>
+      <title>type icon</title>
       <rect
         x="0.6"
         y="0.6"
@@ -17,14 +17,15 @@ export const SchemaWaveIcon: FC = () => {
         rx="5.9"
         stroke="currentColor"
         strokeWidth="1.2"
-      >
-      </rect>
-      <path
-        d="M4.25 7.5C4.25 6 5.75 5 6.5 6.5C7.25 8 8.75 7 8.75 5.5"
-        stroke="currentColor"
-        strokeWidth="1.2"
-      >
-      </path>
+      ></rect>
+      <rect
+        x="5.5"
+        y="5.5"
+        width="2"
+        height="2"
+        rx="1"
+        fill="currentColor"
+      ></rect>
     </svg>
   );
 };
