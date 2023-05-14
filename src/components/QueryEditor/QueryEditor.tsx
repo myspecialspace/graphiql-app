@@ -32,7 +32,7 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
     <>
       <ReactCodeMirror
         value={stateValue}
-        theme="dark"
+        theme="light"
         placeholder={'Type a Query'}
         basicSetup={true}
         extensions={[graphql()]} // graphql schema

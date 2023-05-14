@@ -9,10 +9,10 @@ const QueryResponse = ({ response }: QueryResponseProps) => {
   return (
     <ReactCodeMirror
       value={response}
-      theme="dark"
+      theme="light"
       placeholder={'Type a Query'}
       basicSetup={true}
-      extensions={[json()]} // graphql schema
+      extensions={[json()]}
       width={'500px'}
       readOnly
     />
