@@ -29,5 +29,6 @@
   "registerContinue": "Продолжить",
   "haveAccount": "Уже есть аккаунт?",
   "logIn": "Войти",
+  "schemaDescription": "Схема GraphQL предоставляет корневой тип для каждого вида операций.",
   "goToMain": "На Главную"
 }
