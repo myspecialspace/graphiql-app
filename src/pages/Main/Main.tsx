@@ -11,7 +11,7 @@ export const MainPage: FC = () => {
     <Layout>
       <div className='flex'>
         <SideBar />
-        <QueryEditor />;
+        <QueryEditor setResponse={setResponse}/>;
         <QueryResponse response={response} />
       </div>
     </Layout>
