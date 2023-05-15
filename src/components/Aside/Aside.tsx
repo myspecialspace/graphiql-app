@@ -18,7 +18,7 @@ export const Aside: FC<AsideInterface> = ({ isSchemaOpen }) => {
       <h2 className="text-3xl font-bold text-gray-600">{title}</h2>
       <div>
         <p className="text-gray-600 py-2">{t('schemaDescription')}</p>
-        <div className="flex items-center">
+        <div className="flex items-center text-gray-600">
           <SchemaWaveIcon />
           <span className="px-2">Root Types</span>
         </div>
