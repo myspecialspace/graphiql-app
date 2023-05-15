@@ -9,7 +9,7 @@ export const Layout: FC<Props> = ({ children }) => {
   return (
     <div className="flex flex-col h-full">
       <Header />
-      <div className="content grow">{children}</div>
+      <main className="content grow">{children}</main>
       <Footer />
     </div>
   );
