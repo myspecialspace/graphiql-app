@@ -1,10 +1,11 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
+import * as ls from '@/helpers/local-storage';
 
 export const SelectLanguage: FC = () => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const changeLanguage = (lng: string) => {
-    localStorage.setItem('lang', lng);
+    ls.setLang(lng);
     i18n.changeLanguage(lng);
   };
 
@@ -12,16 +13,12 @@ export const SelectLanguage: FC = () => {
     <select
       name="language"
       id="language"
-      defaultValue={localStorage.getItem('lang') || 'English'}
+      defaultValue={ls.getLang() || 'en'}
       onChange={(e) => changeLanguage(e.target.value)}
-      className="h-11 w-36 rounded-md border-0 bg-transparent py-0 pl-2 pr-7 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 focus:outline-none sm:text-sm"
+      className="flex h-full rounded-md border-0 bg-transparent p-0 text-xl text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 focus:outline-none sm:mr-6"
     >
-      <option className="h-10 w-full" value="en">
-        {t('en')}
-      </option>
-      <option className="h-10 w-full" value="ru">
-        {t('ru')}
-      </option>
+      <option value="en">English</option>
+      <option value="ru">Русский</option>
     </select>
   );
 };

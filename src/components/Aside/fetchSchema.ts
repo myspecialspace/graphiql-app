@@ -1,9 +1,7 @@
 import { schemaQuery } from './schemaQuery';
 
-
 export const fetchSchema = () => {
-
-    fetch('https://countries.trevorblades.com', {
+  fetch('https://countries.trevorblades.com', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -20,4 +18,4 @@ export const fetchSchema = () => {
       console.log(result);
       return result;
     });
-}
+};

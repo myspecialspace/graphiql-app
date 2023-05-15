@@ -7,7 +7,7 @@ interface Props {
 }
 export const Layout: FC<Props> = ({ children }) => {
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col min-h-full">
       <Header />
       <main className="content grow">{children}</main>
       <Footer />
