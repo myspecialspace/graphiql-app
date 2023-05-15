@@ -13,7 +13,7 @@ const QueryResponse = ({ response }: QueryResponseProps) => {
       placeholder={'Type a Query'}
       basicSetup={true}
       extensions={[json()]}
-      width={'500px'}
+      className={'grow'}
       readOnly
     />
   );

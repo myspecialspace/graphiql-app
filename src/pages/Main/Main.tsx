@@ -9,7 +9,7 @@ export const MainPage: FC = () => {
 
   return (
     <Layout>
-      <div className="flex">
+      <div className="flex flex-col sm:flex-row">
         <SideBar />
         <QueryEditor setResponse={setResponse} />;
         <QueryResponse response={response} />

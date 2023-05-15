@@ -2,6 +2,7 @@ export enum LSKey {
   ACCESS_TOKEN = 'accessToken',
   REFRESH_TOKEN = 'refreshToken',
   IS_LOGGED_IN = 'isLoggedIn',
+  LANG = 'lang',
 }
 // перегрузка функции (для описания типов)
 //getItem берет значение в Local Storage и типизирует его
@@ -40,3 +41,6 @@ export const getLoggedIn = (): boolean =>
   getItem<boolean>(LSKey.IS_LOGGED_IN, false); //объявляем дженерик <boolean>, по дефолту false на logged in
 export const setLoggedIn = (value: boolean) =>
   setItem(LSKey.IS_LOGGED_IN, String(value));
+
+export const getLang = (): string => getItem<string>(LSKey.LANG) || '';
+export const setLang = (value: string): void => setItem(LSKey.LANG, value);

@@ -37,7 +37,7 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
         basicSetup={true}
         extensions={[graphql()]} // graphql schema
         onChange={onChange}
-        width={'500px'}
+        className={'grow'}
       />
       <button className="bg-black w-12 h-12" onClick={onClick}></button>
     </>
