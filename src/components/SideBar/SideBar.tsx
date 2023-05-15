@@ -4,7 +4,6 @@ import { BookIcon } from '../common/icons/BookIcon';
 import { Aside } from '../Aside/Aside';
 import { schemaQuery } from '../Aside/schemaQuery';
 
-
 export const SideBar: FC = () => {
   const [color, setColor] = useState('#9ca3af');
   const [isSchemaOpen, setIsSchemaOpen] = useState(false);
@@ -12,42 +11,40 @@ export const SideBar: FC = () => {
   console.log(result);
 
   const fetchSchema = () => {
-
     fetch('https://countries.trevorblades.com', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      query: schemaQuery,
-      variables: {
-        now: new Date().toISOString(),
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
       },
-    }),
-  })
-    .then((res) => res.json())
-    .then((result) => {
-      setIsSchemaOpen(true);
-      console.log(result);
-      setResult(result);
-      return result;
-    });
-}
+      body: JSON.stringify({
+        query: schemaQuery,
+        variables: {
+          now: new Date().toISOString(),
+        },
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        setIsSchemaOpen(true);
+        console.log(result);
+        setResult(result);
+        return result;
+      });
+  };
 
   const handleClick = () => {
     color === '#9ca3af' ? setColor('#1f2937') : setColor('#9ca3af');
     isSchemaOpen === false ? fetchSchema() : setIsSchemaOpen(false);
-    
-  }
-  
+  };
+
   return (
-    <div className='flex'>
-      <div className='w-12 py-4'>
+    <div className="flex">
+      <div className="w-12 py-4">
         <button onClick={() => handleClick()}>
-          <BookIcon color={color}/>
+          <BookIcon color={color} />
         </button>
       </div>
-      <Aside isSchemaOpen={isSchemaOpen}/>
+      <Aside isSchemaOpen={isSchemaOpen} />
     </div>
   );
 };

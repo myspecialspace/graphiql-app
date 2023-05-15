@@ -117,4 +117,4 @@ export const schemaQuery = `
       }
     }
   }
-`
+`;
