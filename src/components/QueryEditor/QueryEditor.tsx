@@ -62,7 +62,7 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
           basicSetup={true}
           extensions={[graphql()]} // graphql schema
           onChange={onChange}
-          width={'500px'}
+          className={'grow'}
         />
         <button className="bg-black w-12 h-12" onClick={onClick}></button>
       </div>
@@ -72,11 +72,7 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
           <button onClick={() => setVariables(false)}>Headers</button>
         </div>
         <button onClick={handleClick}>
-          {!isOpen ? (
-            <ChevronDownIcon />
-          ) : (
-            <ChevronUpIcon />
-          )}
+          {!isOpen ? <ChevronDownIcon /> : <ChevronUpIcon />}
         </button>
       </div>
       {isOpen && (
@@ -90,7 +86,7 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
                 basicSetup={true}
                 extensions={[graphql()]}
                 onChange={onVariablesChange}
-                width={'500px'}
+                className={'grow'}
               />
             </div>
           ) : (
@@ -102,7 +98,7 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
                 basicSetup={true}
                 extensions={[graphql()]}
                 onChange={onHeadersChange}
-                width={'500px'}
+                className={'grow'}
               />
             </div>
           )}
