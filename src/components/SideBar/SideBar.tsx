@@ -3,12 +3,12 @@ import { BookIcon } from '../common/icons/BookIcon';
 //import { fetchSchema } from '../Aside/fetchSchema';
 import { Aside } from '../Aside/Aside';
 import { schemaQuery } from '../Aside/schemaQuery';
+import { IntrospectionSchema } from 'graphql';
 
 export const SideBar: FC = () => {
   const [color, setColor] = useState('#9ca3af');
   const [isSchemaOpen, setIsSchemaOpen] = useState(false);
-  const [result, setResult] = useState();
-  console.log(result);
+  const [schema, setSchema] = useState<IntrospectionSchema>(); // кладем схему
 
   const fetchSchema = () => {
     fetch('https://countries.trevorblades.com', {
@@ -27,8 +27,7 @@ export const SideBar: FC = () => {
       .then((result) => {
         setIsSchemaOpen(true);
         console.log(result);
-        setResult(result);
-        return result;
+        setSchema(result.data.__schema); // положили дату
       });
   };
 
@@ -44,7 +43,7 @@ export const SideBar: FC = () => {
           <BookIcon color={color} />
         </button>
       </div>
-      <Aside isSchemaOpen={isSchemaOpen} />
+      <Aside isSchemaOpen={isSchemaOpen} schema={schema!} />
     </div>
   );
 };
