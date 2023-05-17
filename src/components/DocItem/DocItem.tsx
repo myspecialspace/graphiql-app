@@ -60,7 +60,7 @@ export const DocItemField: FC<{ field: IntrospectionField }> = ({ field }) => {
   );
 };
 // компонент рисует вьюшку
-export const DocItem: FC<Props> = ({ item, onSelect }) => {
+export const DocItem: FC<Props> = ({ item }) => {
   console.log('render', item);
 
   if (item.kind === 'OBJECT') {

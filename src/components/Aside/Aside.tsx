@@ -11,14 +11,14 @@ interface AsideInterface {
 }
 
 export const Aside: FC<AsideInterface> = ({ isSchemaOpen, schema }) => {
-  const [title, setTitle] = useState('Docs');
+  const [title] = useState('Docs');
   const { t } = useTranslation();
   const [docItems, setDocItems] = useState<IntrospectionType[]>([]); //наш пройденный путь, закидываем рутовый объект по умолчанию  // DOCS_ROOT_ITEM,
 
   // текущий элемент = последний элемент из хлебных крошек
   const docItem = docItems[docItems.length - 1];
   // предыдущий элемент
-  const prevDocItem = docItems[docItems.length - 2];
+  // const prevDocItem = docItems[docItems.length - 2];
   //в Types находим name: Query = типов нет?! т.к. запрос описываем по-своему
   const findType = (name: string) => {
     return schema.types.find((type) => type.name === name);
