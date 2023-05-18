@@ -5,6 +5,7 @@ import {
   IntrospectionInputTypeRef,
   IntrospectionOutputTypeRef,
 } from 'graphql';
+import { SchemaFieldsIcon } from '../common/icons/SchemaFieldsIcon';
 
 interface Props {
   item: IntrospectionType;
@@ -45,7 +46,7 @@ export const DocItemField: FC<{ field: IntrospectionField }> = ({ field }) => {
         (
         <span>
           {field.args.map((arg) => (
-            <span className="text-green-600" key={arg.name}>
+            <span key={arg.name}>
               {arg.name}: {<FieldType type={arg.type} />}{' '}
               {arg.defaultValue == null ? '' : ' = ' + arg.defaultValue}
             </span>
@@ -66,7 +67,10 @@ export const DocItem: FC<Props> = ({ item }) => {
   if (item.kind === 'OBJECT') {
     return (
       <div>
-        <div>Fields:</div>
+        <div className="flex items-center text-gray-600">
+          <SchemaFieldsIcon />
+          <span className="ml-1.5">Fields:</span>
+        </div>
         {item.fields.map((field) => (
           <DocItemField key={field.name} field={field} />
         ))}

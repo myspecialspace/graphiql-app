@@ -65,7 +65,7 @@ export const Header: FC = () => {
 
   return (
     <>
-      <header className="h-16 bg-slate-200 shrink-0 sticky top-0 left-0">
+      <header className="h-16 bg-slate-200 shrink-0 sticky top-0 left-0 z-10">
         <div className="flex flex-row items-center justify-between  h-full">
           <div className="logo px-4 h-full flex items-center">
             <Link to="/">GraphiQL</Link>
