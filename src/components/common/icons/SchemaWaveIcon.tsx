@@ -17,14 +17,12 @@ export const SchemaWaveIcon: FC = () => {
         rx="5.9"
         stroke="currentColor"
         strokeWidth="1.2"
-      >
-      </rect>
+      ></rect>
       <path
         d="M4.25 7.5C4.25 6 5.75 5 6.5 6.5C7.25 8 8.75 7 8.75 5.5"
         stroke="currentColor"
         strokeWidth="1.2"
-      >
-      </path>
+      ></path>
     </svg>
   );
 };
