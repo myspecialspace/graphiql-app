@@ -16,7 +16,7 @@ export const DocItemRoot: FC<Props> = ({ name, onSelect }) => {
         <span className="px-2">Root Types</span>
       </div>
       <div>
-        <span className="text-cyan-600">query: </span>
+        <span className="text-sky-600">query: </span>
         <span
           className="cursor-pointer text-orange-400 hover:underline"
           onClick={() => onSelect(name)}

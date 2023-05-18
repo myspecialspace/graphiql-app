@@ -53,7 +53,7 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
   };
 
   return (
-    <div className="text-left">
+    <div className="text-left grow">
       <div>
         <ReactCodeMirror
           value={stateValue}
