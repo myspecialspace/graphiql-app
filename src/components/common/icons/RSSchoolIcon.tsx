@@ -5,7 +5,7 @@ export const RSSchoolIcon: FC = () => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 552.85 198.67"
-      className="w-24 h-6"
+      className="w-24 h-6 cursor-pointer"
     >
       <title>rs_school</title>
       <g data-name="Layer 2">
@@ -37,7 +37,7 @@ export const RSSchoolIcon: FC = () => {
             15.61q-10 5.58-24.86 5.58-15.12 0-25-4.82a37.59 37.59 0 0 1-16.07-15.25q-6.26-10.42-6.25-26.11zm27.63.13q0 
             13.55 5 19.46t13.7 5.91q8.91 0 13.79-5.79t4.88-20.8q0-12.63-5.1-18.46t-13.82-5.82A16.78 16.78 0 0 0 
             344 133q-5.07 6-5.08 19.62z"
-            fill="#42174d"
+            fill="#3b0764"
             className="change"
           />
           <path
@@ -45,12 +45,12 @@ export const RSSchoolIcon: FC = () => {
               25.72a37.6 37.6 0 0 1-15.25 15.61q-10 5.58-24.86 5.58-15.13 0-25-4.82a37.67 37.67 0 0 
               1-16.08-15.25q-6.22-10.43-6.22-26.12zm27.64.13q0 13.55 5 19.46t13.72 5.92q8.91 0 
               13.79-5.79t4.88-20.8q0-12.63-5.09-18.46t-13.82-5.82A16.77 16.77 0 0 0 425 133q-5.09 6-5.08 19.62z"
-            fill="#42174d"
+            fill="#3b0764"
             className="change"
           />
           <path
             d="M482.08 107.72h27.64v67.41h43.13v22h-70.77z"
-            fill="#42174d"
+            fill="#3b0764"
             className="change"
           />
         </g>
