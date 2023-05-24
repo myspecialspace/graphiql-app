@@ -1,21 +1,59 @@
 import { FC } from 'react';
-import { IntrospectionInputTypeRef, IntrospectionOutputTypeRef } from 'graphql';
+import {
+  IntrospectionInputType,
+  IntrospectionInputTypeRef,
+  IntrospectionNamedTypeRef,
+  IntrospectionOutputTypeRef,
+} from 'graphql';
+import { OnSelectFn, SelectType } from '../DocItem/DocItem';
 
 // компонент кот. рисует return type (Continent, [Continent!]!)
-export const FieldType: FC<{
-  type: IntrospectionOutputTypeRef | IntrospectionInputTypeRef;
-}> = ({ type }) => {
-  if (type.kind === 'NON_NULL') {
-    return <span>{<FieldType type={type.ofType} />}!</span>;
+interface Props {
+  item: IntrospectionInputTypeRef | IntrospectionOutputTypeRef;
+  selectType: SelectType.INPUT | SelectType.OUTPUT;
+  onSelect: OnSelectFn;
+}
+export const FieldType: FC<Props> = ({ item, selectType, onSelect }) => {
+  if (item.kind === 'NON_NULL') {
+    return (
+      <span>
+        {
+          <FieldType
+            item={item.ofType}
+            selectType={selectType}
+            onSelect={onSelect}
+          />
+        }
+        !
+      </span>
+    );
   }
 
-  if (type.kind === 'LIST') {
-    return <span>[{<FieldType type={type.ofType} />}]</span>;
+  if (item.kind === 'LIST') {
+    return (
+      <span>
+        [
+        {
+          <FieldType
+            item={item.ofType}
+            selectType={selectType}
+            onSelect={onSelect}
+          />
+        }
+        ]
+      </span>
+    );
   }
+
+  const safeItem = item as IntrospectionNamedTypeRef<IntrospectionInputType>;
+  const st = selectType as SelectType.INPUT;
 
   return (
-    <span className="cursor-pointer text-orange-400 hover:underline">
-      {type.name}
+    <span
+      className="cursor-pointer text-orange-400 hover:underline"
+      onClick={() => onSelect({ item: safeItem, type: st })}
+    >
+      {item.name}
     </span>
   );
 };
