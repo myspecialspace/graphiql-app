@@ -1,6 +1,5 @@
 import { FC, useState } from 'react';
 import { BookIcon } from '../common/icons/BookIcon';
-//import { fetchSchema } from '../Aside/fetchSchema';
 import { Aside } from '../Aside/Aside';
 import { schemaQuery } from '../Aside/schemaQuery';
 import { IntrospectionSchema } from 'graphql';
@@ -8,7 +7,7 @@ import { IntrospectionSchema } from 'graphql';
 export const SideBar: FC = () => {
   const [color, setColor] = useState('#9ca3af');
   const [isSchemaOpen, setIsSchemaOpen] = useState(false);
-  const [schema, setSchema] = useState<IntrospectionSchema>(); // кладем схему
+  const [schema, setSchema] = useState<IntrospectionSchema>();
 
   const fetchSchema = () => {
     fetch('https://countries.trevorblades.com', {
@@ -26,8 +25,7 @@ export const SideBar: FC = () => {
       .then((res) => res.json())
       .then((result) => {
         setIsSchemaOpen(true);
-        console.log(result);
-        setSchema(result.data.__schema); // положили дату
+        setSchema(result.data.__schema);
       });
   };
 

@@ -4,14 +4,11 @@ export enum LSKey {
   IS_LOGGED_IN = 'isLoggedIn',
   LANG = 'lang',
 }
-// перегрузка функции (для описания типов)
-//getItem берет значение в Local Storage и типизирует его
-function getItem<TReturn>(key: LSKey): TReturn | null; //объявляются типы
-function getItem<TReturn>(key: LSKey, def: TReturn): TReturn; //объявляются типы
-//сама реализация ф-ции
+
+function getItem<TReturn>(key: LSKey): TReturn | null;
+function getItem<TReturn>(key: LSKey, def: TReturn): TReturn;
 function getItem<TReturn>(key: LSKey, def?: TReturn): TReturn | null {
-  const raw = localStorage.getItem(key); // возвращает string | null
-  // условие под null
+  const raw = localStorage.getItem(key);
   try {
     return JSON.parse(raw || '');
   } catch (error) {
@@ -38,7 +35,7 @@ export const setRefreshToken = (value: string) => {
 };
 
 export const getLoggedIn = (): boolean =>
-  getItem<boolean>(LSKey.IS_LOGGED_IN, false); //объявляем дженерик <boolean>, по дефолту false на logged in
+  getItem<boolean>(LSKey.IS_LOGGED_IN, false);
 export const setLoggedIn = (value: boolean) =>
   setItem(LSKey.IS_LOGGED_IN, String(value));
 

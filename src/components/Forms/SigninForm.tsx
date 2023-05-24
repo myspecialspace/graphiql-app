@@ -19,7 +19,7 @@ export const SigninForm: FC = () => {
   } = useForm<SignInFormInterface>({
     mode: 'onBlur',
   });
-  //достаем хук
+
   const auth = useAuth();
   const navigate = useNavigate();
 

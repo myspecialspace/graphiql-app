@@ -26,17 +26,14 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
 
   const onChange = (value: string) => {
     debounceSetState(value);
-    console.log(JSON.stringify(stateValue));
   };
 
   const onHeadersChange = (value: string) => {
     setHeadersValue(value);
-    console.log(JSON.stringify(headersValue));
   };
 
   const onVariablesChange = (value: string) => {
     setVariablesValue(value);
-    console.log(JSON.stringify(variablesValue));
   };
 
   const onClick = () => {
@@ -60,7 +57,7 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
           theme="light"
           placeholder={'Type a Query'}
           basicSetup={true}
-          extensions={[graphql()]} // graphql schema
+          extensions={[graphql()]}
           onChange={onChange}
           className={'grow'}
         />

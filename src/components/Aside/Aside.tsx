@@ -1,9 +1,16 @@
 import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { DocItem, OnSelectFn } from '../DocItem/DocItem';
-// import { DOCS_ROOT_ITEM, isRootItem } from './constants';
-import { IntrospectionSchema, IntrospectionType } from 'graphql';
+import {
+  DocItem,
+  OnSelectData,
+  OnSelectFn,
+  SelectType,
+} from '../DocItem/DocItem';
+import { IntrospectionSchema } from 'graphql';
 import { DocItemRoot } from '../DocItemRoot/DocItemRoot';
+import { DocItemField } from '../DocItemField/DocItemField';
+import { DocItemName } from '../DocItemName/DocItemName';
+import { DocItemAnyType } from '../DocItemAnyType/DocItemAnyType';
 
 interface AsideInterface {
   isSchemaOpen: boolean;
@@ -11,44 +18,68 @@ interface AsideInterface {
 }
 
 export const Aside: FC<AsideInterface> = ({ isSchemaOpen, schema }) => {
-  const [title] = useState('Docs');
   const { t } = useTranslation();
-  const [docItems, setDocItems] = useState<IntrospectionType[]>([]); //наш пройденный путь, закидываем рутовый объект по умолчанию  // DOCS_ROOT_ITEM,
+  const [docItems, setDocItems] = useState<OnSelectData[]>([]); //наш пройденный путь, закидываем рутовый объект по умолчанию  // DOCS_ROOT_ITEM,
 
   // текущий элемент = последний элемент из хлебных крошек
   const docItem = docItems[docItems.length - 1];
-  // предыдущий элемент
-  // const prevDocItem = docItems[docItems.length - 2];
   //в Types находим name: Query = типов нет?! т.к. запрос описываем по-своему
   const findType = (name: string) => {
     return schema.types.find((type) => type.name === name);
   };
 
   //обработчик клика
-  const onSelect: OnSelectFn = (item) => {
-    console.log('onSelect', item);
+  const onSelect: OnSelectFn = (data) => {
+    console.log('onSelect', data);
+    setDocItems([...docItems, data]);
   };
 
   const onSelectRoot = (name: string) => {
     // findType by name in schema
-    const type = findType(name)!;
+    const item = findType(name)!;
 
     // set nextDocItems = [...docItems, type];
-    setDocItems([...docItems, type]);
+    setDocItems([...docItems, { type: SelectType.ROOT, item }]);
+  };
+  // срезаем(удаляем) последний элемент из DocItems
+  const onBack = () => {
+    setDocItems(docItems.slice(0, -1));
   };
 
-  console.log({ schema });
+  console.log({ schema, docItem });
 
   return (
     <section
       className={isSchemaOpen ? 'block max-w-sm p-2 text-left' : 'hidden'}
     >
-      <h2 className="text-3xl font-bold text-gray-600">{title}</h2>
-      <p className="text-gray-600 py-2">{t('schemaDescription')}</p>
-      {docItem ? (
-        <DocItem item={docItem} onSelect={onSelect} />
-      ) : (
-        <DocItemRoot name={schema?.queryType.name} onSelect={onSelectRoot} />
+      {!!docItems.length && (
+        <div
+          className="cursor-pointer hover:underline"
+          onClick={() => onBack()}
+        >
+          {'< back'}
+        </div>
+      )}
+
+      {!docItem && (
+        <>
+          <DocItemName name={'Docs'} />
+          <p className="text-gray-600 py-2">{t('schemaDescription')}</p>
+          <DocItemRoot name={schema?.queryType.name} onSelect={onSelectRoot} />
+        </>
+      )}
+      {docItem?.type === SelectType.ROOT && (
+        <DocItem item={docItem.item} onSelect={onSelect} />
+      )}
+      {docItem?.type === SelectType.FIELD && (
+        <DocItemField item={docItem.item} onSelect={onSelect} />
+      )}
+      {(docItem?.type === SelectType.INPUT ||
+        docItem?.type === SelectType.OUTPUT) && (
+        <DocItemAnyType
+          item={findType(docItem.item.name)!}
+          onSelect={onSelect}
+        />
       )}
     </section>
   );
