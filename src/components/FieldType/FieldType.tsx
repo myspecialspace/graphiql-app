@@ -1,18 +1,13 @@
 import { FC } from 'react';
-import { IntrospectionInputTypeRef, IntrospectionOutputTypeRef } from 'graphql';
+import {
+  IntrospectionInputType,
+  IntrospectionInputTypeRef,
+  IntrospectionNamedTypeRef,
+  IntrospectionOutputTypeRef,
+} from 'graphql';
 import { OnSelectFn, SelectType } from '../DocItem/DocItem';
 
 // компонент кот. рисует return type (Continent, [Continent!]!)
-interface PropsWithInput {
-  item: IntrospectionInputTypeRef;
-  selectType: SelectType.INPUT;
-  onSelect: OnSelectFn;
-}
-interface PropsWithOutput {
-  item: IntrospectionOutputTypeRef;
-  selectType: SelectType.OUTPUT;
-  onSelect: OnSelectFn;
-}
 interface Props {
   item: IntrospectionInputTypeRef | IntrospectionOutputTypeRef;
   selectType: SelectType.INPUT | SelectType.OUTPUT;
@@ -50,7 +45,7 @@ export const FieldType: FC<Props> = ({ item, selectType, onSelect }) => {
     );
   }
 
-  const safeItem = item as IntrospectionInputTypeRef;
+  const safeItem = item as IntrospectionNamedTypeRef<IntrospectionInputType>;
   const st = selectType as SelectType.INPUT;
 
   return (

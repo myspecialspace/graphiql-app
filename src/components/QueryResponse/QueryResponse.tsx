@@ -5,15 +5,17 @@ interface QueryResponseProps {
   response: string;
 }
 
+const EMPTY_VALUE = [1, 2, 3, 4, 5].map(() => '\n').join('');
+
 const QueryResponse = ({ response }: QueryResponseProps) => {
   return (
     <ReactCodeMirror
-      value={response}
+      value={response || EMPTY_VALUE}
       theme="light"
-      placeholder={'Type a Query'}
+      placeholder={'Response here'}
       basicSetup={true}
       extensions={[json()]}
-      className={'grow'}
+      className={'grow text-left max-w-[50%]'}
       readOnly
     />
   );

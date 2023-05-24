@@ -13,16 +13,16 @@ import { DocItemName } from '../DocItemName/DocItemName';
 import { DocItemAnyType } from '../DocItemAnyType/DocItemAnyType';
 
 interface AsideInterface {
-  isSchemaOpen: boolean;
   schema: IntrospectionSchema;
 }
 
-export const Aside: FC<AsideInterface> = ({ isSchemaOpen, schema }) => {
+const Aside: FC<AsideInterface> = ({ schema }) => {
   const { t } = useTranslation();
   const [docItems, setDocItems] = useState<OnSelectData[]>([]); //наш пройденный путь, закидываем рутовый объект по умолчанию  // DOCS_ROOT_ITEM,
 
   // текущий элемент = последний элемент из хлебных крошек
   const docItem = docItems[docItems.length - 1];
+  const prevDocItem = docItems[docItems.length - 2];
   //в Types находим name: Query = типов нет?! т.к. запрос описываем по-своему
   const findType = (name: string) => {
     return schema.types.find((type) => type.name === name);
@@ -30,7 +30,6 @@ export const Aside: FC<AsideInterface> = ({ isSchemaOpen, schema }) => {
 
   //обработчик клика
   const onSelect: OnSelectFn = (data) => {
-    console.log('onSelect', data);
     setDocItems([...docItems, data]);
   };
 
@@ -46,18 +45,14 @@ export const Aside: FC<AsideInterface> = ({ isSchemaOpen, schema }) => {
     setDocItems(docItems.slice(0, -1));
   };
 
-  console.log({ schema, docItem });
-
   return (
-    <section
-      className={isSchemaOpen ? 'block max-w-sm p-2 text-left' : 'hidden'}
-    >
+    <section className="block p-2 text-left">
       {!!docItems.length && (
         <div
           className="cursor-pointer hover:underline"
           onClick={() => onBack()}
         >
-          {'< back'}
+          {'< ' + (prevDocItem?.item.name || 'Docs')}
         </div>
       )}
 
@@ -71,7 +66,8 @@ export const Aside: FC<AsideInterface> = ({ isSchemaOpen, schema }) => {
       {docItem?.type === SelectType.ROOT && (
         <DocItem item={docItem.item} onSelect={onSelect} />
       )}
-      {docItem?.type === SelectType.FIELD && (
+      {(docItem?.type === SelectType.FIELD ||
+        docItem?.type === SelectType.INPUT_FIELD) && (
         <DocItemField item={docItem.item} onSelect={onSelect} />
       )}
       {(docItem?.type === SelectType.INPUT ||
@@ -84,3 +80,5 @@ export const Aside: FC<AsideInterface> = ({ isSchemaOpen, schema }) => {
     </section>
   );
 };
+
+export default Aside;

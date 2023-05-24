@@ -4,13 +4,20 @@ import useDebounceState from '../../hooks/useDebounceState';
 import { useState } from 'react';
 import { ChevronDownIcon } from '../common/icons/ChevronDownIcon';
 import { ChevronUpIcon } from '../common/icons/ChevronUpIcon';
+import { ButtonTheme, HeaderButton } from '../common/HeaderButton';
+import { PlayIcon } from '../common/icons/PlayIcon';
+import { CopyIcon } from '../common/icons/CopyIcon';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { api } from '@/api';
 
 interface QueryEditorProps {
   setResponse: (response: string) => void;
 }
 
 export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
-  const [stateValue, debounceSetState] = useDebounceState<string>();
+  const [stateValue, debounceSetState] = useDebounceState<string>(
+    [1, 2, 3, 4, 5].map(() => '\n').join('')
+  );
   const [headersValue, setHeadersValue] = useState<string>(
     JSON.stringify({ 'Content-Type': 'application/json' })
   );
@@ -37,31 +44,46 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
   };
 
   const onClick = () => {
-    fetch('https://countries.trevorblades.com', {
+    api('https://countries.trevorblades.com', {
       method: 'POST',
       headers: JSON.parse(headersValue),
-      body: JSON.stringify({
+      data: JSON.stringify({
         query: stateValue,
         variables: JSON.parse(variablesValue),
       }),
     })
-      .then((res) => res.json())
+      .then((res) => res.data)
       .then((data) => setResponse(JSON.stringify(data, null, 2)));
   };
 
   return (
-    <div className="text-left grow">
-      <div>
-        <ReactCodeMirror
-          value={stateValue}
-          theme="light"
-          placeholder={'Type a Query'}
-          basicSetup={true}
-          extensions={[graphql()]}
-          onChange={onChange}
-          className={'grow'}
-        />
-        <button className="bg-black w-12 h-12" onClick={onClick}></button>
+    <div className="text-left grow max-w-[50%]">
+      <div className="flex">
+        <div
+          className="flex overflow-auto h-full w-full"
+          style={{ height: 'calc(100vh - 168px)' }}
+        >
+          <ReactCodeMirror
+            value={stateValue}
+            theme="light"
+            placeholder={'Type a Query'}
+            basicSetup={true}
+            extensions={[graphql()]} // graphql schema
+            onChange={onChange}
+            className={'grow'}
+          />
+        </div>
+        <div className="flex flex-col">
+          <HeaderButton onClick={onClick} text="">
+            <PlayIcon />
+          </HeaderButton>
+
+          <CopyToClipboard text={stateValue || ''}>
+            <HeaderButton text="" theme={ButtonTheme.SECONDARY}>
+              <CopyIcon />
+            </HeaderButton>
+          </CopyToClipboard>
+        </div>
       </div>
       <div className="flex justify-between">
         <div className="flex gap-x-5 p-5 text-gray-700">

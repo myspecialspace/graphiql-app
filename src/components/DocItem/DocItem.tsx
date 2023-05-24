@@ -50,8 +50,6 @@ export type OnSelectFn = (data: OnSelectData) => void;
 
 // компонент рисует вьюшку
 export const DocItem: FC<Props> = ({ item, onSelect }) => {
-  console.log('render', item);
-
   if (item.kind === 'OBJECT') {
     return (
       <div>

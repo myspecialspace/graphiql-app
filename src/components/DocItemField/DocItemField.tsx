@@ -1,4 +1,4 @@
-import { IntrospectionField } from 'graphql';
+import { IntrospectionField, IntrospectionInputValue } from 'graphql';
 import { FC } from 'react';
 import { SchemaArgumentsIcon } from '../common/icons/SchemaArgumentsIcon';
 import { SchemaTypeIcon } from '../common/icons/SchemaTypeIcon';
@@ -8,7 +8,7 @@ import { FieldType } from '../FieldType/FieldType';
 import { ItemFieldArgs } from '../ItemFieldArgs/ItemFieldArgs';
 
 interface Props {
-  item: IntrospectionField;
+  item: IntrospectionField | IntrospectionInputValue;
   onSelect: OnSelectFn;
 }
 
@@ -26,13 +26,17 @@ export const DocItemField: FC<Props> = ({ item, onSelect }) => {
         selectType={SelectType.OUTPUT}
       />
 
-      <div className="flex items-center text-gray-600">
-        <SchemaArgumentsIcon />
-        <div className="ml-2">Arguments</div>
-      </div>
-      <div>
-        <ItemFieldArgs args={item.args} onSelect={onSelect} />
-      </div>
+      {'args' in item && !!item.args?.length && (
+        <>
+          <div className="flex items-center text-gray-600">
+            <SchemaArgumentsIcon />
+            <div className="ml-2">Arguments</div>
+          </div>
+          <div>
+            <ItemFieldArgs args={item.args} onSelect={onSelect} />
+          </div>
+        </>
+      )}
     </div>
   );
 };
