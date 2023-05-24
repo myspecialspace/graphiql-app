@@ -8,6 +8,7 @@ import { useResponsive } from '@/hooks/responsive';
 import { slide as Menu } from 'react-burger-menu';
 import { burgerStyles } from './burger-styles';
 import burgerIcon from '@/assets/icons/burger.svg';
+import logoIcon from '@/assets/icons/logo.svg';
 
 export const Header: FC = () => {
   const { t } = useTranslation();
@@ -68,7 +69,9 @@ export const Header: FC = () => {
       <header className="h-16 bg-slate-200 shrink-0 sticky top-0 left-0 z-10">
         <div className="flex flex-row items-center justify-between  h-full">
           <div className="logo px-4 h-full flex items-center">
-            <Link to="/">GraphiQL</Link>
+            <Link to="/">
+            <img className="block pt-2" src={logoIcon} alt="logo" />
+            </Link>
           </div>
           {!isMobile && (
             <div className="flex px-4 h-full">{getHeaderButtons()}</div>
@@ -78,7 +81,7 @@ export const Header: FC = () => {
               className="flex mr-4 h-10"
               onClick={() => setIsBurgerOpen(!isBurgerOpen)}
             >
-              <img className="h-full" src={burgerIcon} alt="" />
+              <img className="h-full" src={burgerIcon} alt="burger" />
             </button>
           )}
         </div>

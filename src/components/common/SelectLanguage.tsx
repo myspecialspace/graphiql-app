@@ -15,7 +15,7 @@ export const SelectLanguage: FC = () => {
       id="language"
       defaultValue={ls.getLang() || 'en'}
       onChange={(e) => changeLanguage(e.target.value)}
-      className="flex h-full rounded-md border-0 bg-transparent p-0 text-xl text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 focus:outline-none sm:mr-6"
+      className="flex h-full rounded-md border-0 bg-transparent p-0 text-xl text-gray-500 focus:ring-inset focus:outline-none sm:mr-6 cursor-pointer"
     >
       <option value="en">English</option>
       <option value="ru">Русский</option>

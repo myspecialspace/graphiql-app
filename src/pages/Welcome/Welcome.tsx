@@ -14,14 +14,15 @@ export const WelcomePage: FC = () => {
             src={image}
             alt="Api picture"
           />
-          <p className="w-4/4 lg:w-2/4 ml-5 lg:ml-20 text-2xl sm:text-3xl text-left text-purple-950 font-bold">
+          <p className="w-4/4 lg:w-2/4 mx-5 lg:ml-20 text-2xl sm:text-3xl text-left text-purple-950 font-bold">
             {t('about')}
           </p>
         </section>
-        <section className="my-5">
-          <h2 className="mb-20 text-4xl font-extrabold text-fuchsia-950">
+        <section className="my-10 pb-14 text-purple-700 text-xl">
+          <h2 className="mb-10 text-4xl font-extrabold text-purple-900">
             {t('developers')}
           </h2>
+          <p className="mb-20">{t('school')}</p>
           <div className="flex flex-col sm:flex-row">
             <div className="flex flex-col items-center w-3/3 sm:w-1/3 p-3">
               <img
