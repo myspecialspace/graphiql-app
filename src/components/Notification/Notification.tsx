@@ -1,7 +1,10 @@
 import { api } from '@/api';
 import { FC, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const Notification: FC = () => {
+  const { t } = useTranslation();
+
   const [message, setMessage] = useState('');
 
   const close = () => setMessage('');
@@ -10,7 +13,7 @@ export const Notification: FC = () => {
     api.interceptors.response.use(
       (res) => res,
       (err) => {
-        setMessage('Произошла ошибка');
+        setMessage(t('errorNotification')!);
         window.setTimeout(() => {
           close();
         }, 5000);

@@ -11,7 +11,7 @@ const Aside = lazy(() => import('../Aside/Aside'));
 export const SideBar: FC = () => {
   const [color, setColor] = useState('#9ca3af');
   const [isSchemaOpen, setIsSchemaOpen] = useState(false);
-  const [schema, setSchema] = useState<IntrospectionSchema>(); // кладем схему
+  const [schema, setSchema] = useState<IntrospectionSchema>();
 
   const fetchSchema = () => {
     api('https://countries.trevorblades.com', {
@@ -29,7 +29,7 @@ export const SideBar: FC = () => {
       .then((res) => res.data)
       .then((result) => {
         setIsSchemaOpen(true);
-        setSchema(result.data.__schema); // положили дату
+        setSchema(result.data.__schema);
       });
   };
 

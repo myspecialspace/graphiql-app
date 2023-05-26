@@ -68,7 +68,7 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
             theme="light"
             placeholder={'Type a Query'}
             basicSetup={true}
-            extensions={[graphql()]} // graphql schema
+            extensions={[graphql()]}
             onChange={onChange}
             className={'grow'}
           />

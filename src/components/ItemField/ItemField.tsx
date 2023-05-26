@@ -9,7 +9,7 @@ interface Props {
   selectType: SelectType.FIELD | SelectType.INPUT_FIELD;
   onSelect: OnSelectFn;
 }
-// отдельный  компонент с филдами принимает 1 филд
+
 export const ItemField: FC<Props> = ({ field, selectType, onSelect }) => {
   return (
     <div className="flex whitespace-nowrap">
