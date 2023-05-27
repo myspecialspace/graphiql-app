@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 export enum ButtonTheme {
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
+  ACTIVE = 'active',
 }
 interface LinkProps {
   text: string;
@@ -19,6 +20,8 @@ const classesByTheme = {
     'bg-gradient-to-r from-purple-600 to-blue-500 hover:from-pink-500 hover:to-yellow-500',
   [ButtonTheme.SECONDARY]:
     'text-slate-500 hover:bg-slate-100 active:bg-slate-200',
+  [ButtonTheme.ACTIVE]:
+    'text-slate-500 bg-slate-200 hover:bg-slate-100 active:bg-slate-200',
 };
 
 export const HeaderButton: FC<LinkProps> = ({

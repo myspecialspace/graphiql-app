@@ -1,6 +1,5 @@
 import ReactCodeMirror from '@uiw/react-codemirror';
 import { graphql } from 'cm6-graphql';
-import useDebounceState from '../../hooks/useDebounceState';
 import { useState } from 'react';
 import { ChevronDownIcon } from '../common/icons/ChevronDownIcon';
 import { ChevronUpIcon } from '../common/icons/ChevronUpIcon';
@@ -12,16 +11,20 @@ import { api } from '@/api';
 import PlusIcon from '../common/icons/PlusIcon';
 
 interface QueryEditorProps {
+  tabValues: string[] | undefined;
+  currentTab: number;
   setResponse: (response: string) => void;
+  setCurrentTab: (tab: number) => void;
+  setTabValues: (tabValues: string[]) => void;
 }
 
-interface editorValue {
-  value: string;
-}
-
-export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
-  const [tabValues, setTabValues] = useDebounceState<string[]>(['hello']);
-  const [currentTab, setCurrentTab] = useState<number>(0);
+export const QueryEditor = ({
+  setResponse,
+  setTabValues,
+  setCurrentTab,
+  tabValues,
+  currentTab,
+}: QueryEditorProps) => {
   const [headersValue, setHeadersValue] = useState<string>(
     JSON.stringify({ 'Content-Type': 'application/json' })
   );
@@ -70,10 +73,10 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
 
   const onAddNewTab = () => {
     if (tabValues) {
-      const newTabValues = [...tabValues, 'Hello!'];
+      const newTabValues = [...tabValues, ''];
       setTabValues(newTabValues);
     }
-    setCurrentTab((prevTab) => prevTab + 1);
+    setCurrentTab(currentTab + 1);
   };
 
   return (
