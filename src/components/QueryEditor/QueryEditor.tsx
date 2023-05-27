@@ -10,6 +10,8 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { api } from '@/api';
 import PlusIcon from '../common/icons/PlusIcon';
 import DeleteIcon from '../common/icons/DeleteIcon';
+import { useResponsive } from '@/hooks/responsive';
+import { useAppSelector } from '@/store/store';
 
 interface QueryEditorProps {
   tabValues: string[] | undefined;
@@ -26,6 +28,7 @@ export const QueryEditor = ({
   tabValues,
   currentTab,
 }: QueryEditorProps) => {
+  const url = useAppSelector((state) => state.main.url);
   const [headersValue, setHeadersValue] = useState<string>(
     JSON.stringify({ 'Content-Type': 'application/json' })
   );
@@ -34,6 +37,7 @@ export const QueryEditor = ({
   );
   const [isOpen, setIsOpen] = useState(false);
   const [variables, setVariables] = useState(true);
+  const { isMobile } = useResponsive();
 
   const handleClick = () => {
     setIsOpen(!isOpen ? true : false);
@@ -60,7 +64,9 @@ export const QueryEditor = ({
   };
 
   const onClick = () => {
-    api('https://countries.trevorblades.com', {
+    setResponse('');
+
+    api(url, {
       method: 'POST',
       headers: JSON.parse(headersValue),
       data: JSON.stringify({
@@ -69,7 +75,10 @@ export const QueryEditor = ({
       }),
     })
       .then((res) => res.data)
-      .then((data) => setResponse(JSON.stringify(data, null, 2)));
+      .then((data) => setResponse(JSON.stringify(data, null, 2)))
+      .catch((error) => {
+        setResponse(JSON.stringify(error.response.data, null, 2));
+      });
   };
 
   const onAddNewTab = () => {
@@ -96,11 +105,11 @@ export const QueryEditor = ({
   };
 
   return (
-    <div className="text-left grow max-w-[50%]">
+    <div className="text-left grow sm:max-w-[50%]">
       <div className="flex">
         <div
           className="flex overflow-auto h-full w-full"
-          style={{ height: 'calc(100vh - 168px)' }}
+          style={{ height: isMobile ? '' : 'calc(100vh - 236px)' }}
         >
           <ReactCodeMirror
             value={tabValues ? tabValues[currentTab] : ''}
@@ -138,6 +147,17 @@ export const QueryEditor = ({
           >
             <DeleteIcon />
           </HeaderButton>
+          <div className="flex flex-col sticky sm:static top-16 pt-1 sm:pt-0">
+            <HeaderButton onClick={onClick} text="">
+              <PlayIcon />
+            </HeaderButton>
+
+            <CopyToClipboard text={tabValues ? tabValues[currentTab] : ''}>
+              <HeaderButton text="" theme={ButtonTheme.SECONDARY}>
+                <CopyIcon />
+              </HeaderButton>
+            </CopyToClipboard>
+          </div>
         </div>
       </div>
       <div className="flex justify-between">
