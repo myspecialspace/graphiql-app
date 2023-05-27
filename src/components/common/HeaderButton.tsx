@@ -34,7 +34,7 @@ export const HeaderButton: FC<LinkProps> = ({
     <Tag
       to={path || ''}
       className={classNames(
-        'p-3 m-0.5 text-slate-100 text-xl text-center rounded-md flex items-center hover:cursor-pointer',
+        'p-3 m-0.5 w-36 text-slate-100 text-xl text-center rounded-md flex items-center justify-center hover:cursor-pointer',
         classesByTheme[theme]
       )}
       onClick={onClick}

@@ -85,8 +85,8 @@ export const Header: FC = () => {
       <header
         className={
           sticky
-            ? 'h-16 bg-pink-200 shadow-lg shadow-indigo-500/50 py-1 shrink-0 sticky top-0 left-0 z-10'
-            : 'h-16 bg-slate-200 shrink-0 sticky top-0 left-0 z-10'
+            ? 'h-16 bg-purple-100 shadow-lg shadow-gray-500/50 py-1 shrink-0 sticky top-0 left-0 z-10'
+            : 'h-16 bg-gray-100 shrink-0 sticky top-0 left-0 z-10'
         }
         onScroll={handleScroll}
       >

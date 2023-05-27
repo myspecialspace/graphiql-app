@@ -50,10 +50,10 @@ export const SigninForm: FC = () => {
         <label htmlFor="email">
           <input
             {...register('email', {
-              required: 'Please input your E-mail!',
+              required: t('errorInputEmail')!,
               minLength: {
                 value: 8,
-                message: t('errorInputName'),
+                message: t('error'),
               },
               pattern: {
                 value:
@@ -64,7 +64,7 @@ export const SigninForm: FC = () => {
             type="email"
             id="email"
             className="form__input"
-            placeholder={t('Input_your_email')!}
+            placeholder={t('inputYourEmail')!}
           />
           <div className="form__error">
             {errors?.email && <p>{errors?.email?.message || 'Error!'}</p>}
@@ -73,7 +73,7 @@ export const SigninForm: FC = () => {
         <label htmlFor="inputPassword">
           <input
             {...register('password', {
-              required: 'Please input your password!',
+              required: t('errorInputPassword')!,
               minLength: {
                 value: 8,
                 message: t('error'),
@@ -87,7 +87,7 @@ export const SigninForm: FC = () => {
             type="password"
             id="inputPassword"
             className="form__input"
-            placeholder="Input your password..."
+            placeholder={t('enterPassword')!}
           />
           <div className="form__error">
             {errors?.password && <p>{errors?.password?.message || 'Error!'}</p>}

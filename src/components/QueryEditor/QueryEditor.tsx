@@ -11,12 +11,14 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { api } from '@/api';
 import { useResponsive } from '@/hooks/responsive';
 import { useAppSelector } from '@/store/store';
+import { useTranslation } from 'react-i18next';
 
 interface QueryEditorProps {
   setResponse: (response: string) => void;
 }
 
 export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
+  const { t } = useTranslation();
   const url = useAppSelector((state) => state.main.url);
   const [stateValue, debounceSetState] = useDebounceState<string>(
     [1, 2, 3, 4, 5].map(() => '\n').join('')
@@ -98,8 +100,8 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
       </div>
       <div className="flex justify-between">
         <div className="flex gap-x-5 p-5 text-gray-700">
-          <button onClick={() => setVariables(true)}>Variables</button>
-          <button onClick={() => setVariables(false)}>Headers</button>
+          <button onClick={() => setVariables(true)}>{t('variables')}</button>
+          <button onClick={() => setVariables(false)}>{t('headers')}</button>
         </div>
         <button onClick={handleClick}>
           {!isOpen ? <ChevronDownIcon /> : <ChevronUpIcon />}
