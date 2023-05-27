@@ -40,5 +40,6 @@
   "errorNotification": "Произошла ошибка",
   "inputYourEmail": "Введите email...",
   "variables": "Переменные",
-  "headers": "Заголовки"
+  "headers": "Заголовки",
+  "enterApi": "Введите graphql API"
 }

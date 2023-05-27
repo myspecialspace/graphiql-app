@@ -42,5 +42,6 @@
   "errorNotification": "An error has occurred",
   "inputYourEmail": "Input your email...",
   "variables": "Variables",
-  "headers": "Headers"
+  "headers": "Headers",
+  "enterApi": "Enter graphql API"
 }
