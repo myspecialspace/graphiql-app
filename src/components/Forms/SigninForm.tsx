@@ -46,7 +46,7 @@ export const SigninForm: FC = () => {
               required: 'Please input your E-mail!',
               minLength: {
                 value: 8,
-                message: t('error'),
+                message: t('errorInputName'),
               },
               pattern: {
                 value:
@@ -55,6 +55,7 @@ export const SigninForm: FC = () => {
               },
             })}
             type="email"
+            id="email"
             className="form__input"
             placeholder="Input you email..."
           />
@@ -77,6 +78,7 @@ export const SigninForm: FC = () => {
               },
             })}
             type="password"
+            id="inputPassword"
             className="form__input"
             placeholder="Input your password..."
           />

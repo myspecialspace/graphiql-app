@@ -23,6 +23,7 @@
   "loginTitle": "Log in to your account",
   "inputEmail": "Input E-mail",
   "inputPassword": "Input password",
+  "errorInputName": "Please input your E-mail!",
   "error": "Should be minimum 8 symbols, at least one letter, one digit, one special character",
   "login": "Sign In",
   "notAccount": "Don't have an account?",

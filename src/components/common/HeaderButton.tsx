@@ -16,9 +16,9 @@ interface LinkProps {
 
 const classesByTheme = {
   [ButtonTheme.PRIMARY]:
-    'bg-gradient-to-r from-purple-600 to-blue-500 hover:from-pink-500 hover:to-yellow-500',
+    'bg-gradient-to-r from-purple-600 to-blue-500 text-center hover:from-pink-500 hover:to-yellow-500',
   [ButtonTheme.SECONDARY]:
-    'text-slate-500 hover:bg-slate-100 active:bg-slate-200',
+    'text-slate-500 text-center hover:bg-slate-100 active:bg-slate-200',
 };
 
 export const HeaderButton: FC<LinkProps> = ({

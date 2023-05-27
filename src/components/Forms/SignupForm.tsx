@@ -52,6 +52,7 @@ export const SignupForm: FC = () => {
               },
             })}
             className="form__input"
+            id="name"
             placeholder="Enter your name..."
           />
           <div className="form__error">
@@ -73,6 +74,7 @@ export const SignupForm: FC = () => {
               },
             })}
             type="email"
+            id="inputEmail"
             className="form__input"
             placeholder="Enter E-mail..."
           />
@@ -95,6 +97,7 @@ export const SignupForm: FC = () => {
               },
             })}
             type="password"
+            id="inputPassword"
             className="form__input"
             placeholder="Enter password"
           />
