@@ -1,5 +1,6 @@
 import { MAIN_ROUTE } from '@/helpers/constants';
 import { useAuth } from '@/store/hooks/auth';
+import { FirebaseError } from 'firebase/app';
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -17,6 +18,7 @@ export const SignupForm: FC = () => {
     formState: { errors },
     handleSubmit,
     reset,
+    setError,
   } = useForm<SignUpFormInterface>({
     mode: 'onBlur',
   });
@@ -25,14 +27,20 @@ export const SignupForm: FC = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data: SignUpFormInterface) => {
-    await auth.signUp({
-      email: data.email,
-      password: data.password,
-    });
+    try {
+      await auth.signUp({
+        email: data.email,
+        password: data.password,
+      });
 
-    if (auth.isLoggedIn) {
-      reset();
-      navigate(MAIN_ROUTE);
+      if (auth.isLoggedIn) {
+        reset();
+        navigate(MAIN_ROUTE);
+      }
+    } catch (error) {
+      if (error instanceof FirebaseError) {
+        setError('root.submit', { message: error.message });
+      }
     }
   };
 
@@ -108,6 +116,9 @@ export const SignupForm: FC = () => {
         <button type="submit" className="form__button">
           {t('registerContinue')}
         </button>
+        <div className="form__error mt-2">
+          {errors?.root && <p>{errors?.root?.submit.message || 'Error!'}</p>}
+        </div>
         <div className="border mt-4"></div>
         <div>
           <span className="text-purple-900 text-sm mr-2">

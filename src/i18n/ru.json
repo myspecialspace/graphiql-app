@@ -33,5 +33,6 @@
   "logIn": "Войти",
   "schemaDescription": "Схема GraphQL предоставляет корневой тип для каждого вида операций.",
   "goToMain": "На Главную",
-  "errorNotification": "Произошла ошибка"
+  "errorNotification": "Произошла ошибка",
+  "Input_your_email": "Введите email..."
 }

@@ -30,7 +30,7 @@ export const FieldType: FC<Props> = ({ item, selectType, onSelect }) => {
   if (item.kind === 'LIST') {
     return (
       <span>
-        [
+        <span>[</span>
         {
           <FieldType
             item={item.ofType}
@@ -38,7 +38,7 @@ export const FieldType: FC<Props> = ({ item, selectType, onSelect }) => {
             onSelect={onSelect}
           />
         }
-        ]
+        <span>]</span>
       </span>
     );
   }

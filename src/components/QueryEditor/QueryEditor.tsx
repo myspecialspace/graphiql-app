@@ -9,12 +9,15 @@ import { PlayIcon } from '../common/icons/PlayIcon';
 import { CopyIcon } from '../common/icons/CopyIcon';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { api } from '@/api';
+import { useResponsive } from '@/hooks/responsive';
+import { useAppSelector } from '@/store/store';
 
 interface QueryEditorProps {
   setResponse: (response: string) => void;
 }
 
 export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
+  const url = useAppSelector((state) => state.main.url);
   const [stateValue, debounceSetState] = useDebounceState<string>(
     [1, 2, 3, 4, 5].map(() => '\n').join('')
   );
@@ -26,6 +29,7 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
   );
   const [isOpen, setIsOpen] = useState(false);
   const [variables, setVariables] = useState(true);
+  const { isMobile } = useResponsive();
 
   const handleClick = () => {
     setIsOpen(!isOpen ? true : false);
@@ -44,7 +48,9 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
   };
 
   const onClick = () => {
-    api('https://countries.trevorblades.com', {
+    setResponse('');
+
+    api(url, {
       method: 'POST',
       headers: JSON.parse(headersValue),
       data: JSON.stringify({
@@ -53,15 +59,18 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
       }),
     })
       .then((res) => res.data)
-      .then((data) => setResponse(JSON.stringify(data, null, 2)));
+      .then((data) => setResponse(JSON.stringify(data, null, 2)))
+      .catch((error) => {
+        setResponse(JSON.stringify(error.response.data, null, 2));
+      });
   };
 
   return (
-    <div className="text-left grow max-w-[50%]">
+    <div className="text-left grow sm:max-w-[50%]">
       <div className="flex">
         <div
           className="flex overflow-auto h-full w-full"
-          style={{ height: 'calc(100vh - 168px)' }}
+          style={{ height: isMobile ? '' : 'calc(100vh - 236px)' }}
         >
           <ReactCodeMirror
             value={stateValue}
@@ -74,15 +83,17 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
           />
         </div>
         <div className="flex flex-col">
-          <HeaderButton onClick={onClick} text="">
-            <PlayIcon />
-          </HeaderButton>
-
-          <CopyToClipboard text={stateValue || ''}>
-            <HeaderButton text="" theme={ButtonTheme.SECONDARY}>
-              <CopyIcon />
+          <div className="flex flex-col sticky sm:static top-16 pt-1 sm:pt-0">
+            <HeaderButton onClick={onClick} text="">
+              <PlayIcon />
             </HeaderButton>
-          </CopyToClipboard>
+
+            <CopyToClipboard text={stateValue || ''}>
+              <HeaderButton text="" theme={ButtonTheme.SECONDARY}>
+                <CopyIcon />
+              </HeaderButton>
+            </CopyToClipboard>
+          </div>
         </div>
       </div>
       <div className="flex justify-between">

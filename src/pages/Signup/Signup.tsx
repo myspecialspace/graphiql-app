@@ -7,7 +7,7 @@ export const SignupPage: FC = () => {
     <Layout>
       <div className="flex flex-col item-center justify-between h-full mx-4">
         <SignupForm />
-    </div>
+      </div>
     </Layout>
   );
 };
