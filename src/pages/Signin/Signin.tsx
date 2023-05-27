@@ -1,12 +1,13 @@
 import { FC } from 'react';
-import { Footer } from '@/components/Footer/Footer';
 import { SigninForm } from '@/components/Forms/SigninForm';
+import { Layout } from '@/components/common/Layout';
 
 export const SigninPage: FC = () => {
   return (
-    <div className="flex flex-col item-center justify-between h-full mx-4">
-      <SigninForm />
-      <Footer />
-    </div>
+    <Layout>
+      <div className="flex flex-col item-center justify-between h-full mx-4">
+        <SigninForm />
+      </div>
+    </Layout>
   );
 };
