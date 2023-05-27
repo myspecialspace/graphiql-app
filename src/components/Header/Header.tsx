@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { HeaderButton } from '../common/HeaderButton';
 import { Link, useLocation } from 'react-router-dom';
@@ -17,6 +17,19 @@ export const Header: FC = () => {
   const location = useLocation();
   const { isMobile } = useResponsive();
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
+  const [sticky, setSticky] = useState(false);
+
+  const handleScroll = () => {
+    const windowScrollTop = window.scrollY;
+    windowScrollTop > 10 ? setSticky(true) : setSticky(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const onLogout = () => {
     auth.signOut();
@@ -40,7 +53,6 @@ export const Header: FC = () => {
     } else {
       const isSigninPage = location.pathname === SIGNIN_ROUTE;
       const isSignupPage = location.pathname === SIGNUP_ROUTE;
-
       return (
         <>
           <SelectLanguage />
@@ -70,8 +82,15 @@ export const Header: FC = () => {
 
   return (
     <>
-      <header className="h-16 bg-slate-200 shrink-0 sticky top-0 left-0 z-10">
-        <div className="flex flex-row items-center justify-between  h-full">
+      <header
+        className={
+          sticky
+            ? 'h-16 bg-purple-100 shadow-lg shadow-gray-500/50 py-1 shrink-0 sticky top-0 left-0 z-10'
+            : 'h-16 bg-gray-100 shrink-0 sticky top-0 left-0 z-10'
+        }
+        onScroll={handleScroll}
+      >
+        <div className="flex flex-row items-center justify-between h-full">
           <div className="logo px-4 h-full flex items-center">
             <Link to="/">
               <img className="block pt-2" src={logoIcon} alt="logo" />

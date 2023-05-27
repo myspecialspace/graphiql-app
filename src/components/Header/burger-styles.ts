@@ -18,6 +18,7 @@ export const burgerStyles = {
   bmMenuWrap: {
     position: 'fixed',
     height: '100%',
+    width: '100%',
     top: '0',
   },
   bmMenu: {
@@ -33,7 +34,9 @@ export const burgerStyles = {
     padding: '0.8em',
   },
   bmItem: {
-    display: 'inline-block',
+    display: 'block',
+    width: '100%',
+    padding: '10px',
   },
   bmOverlay: {
     background: 'rgba(0, 0, 0, 0.3)',
