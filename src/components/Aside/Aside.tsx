@@ -42,7 +42,7 @@ const Aside: FC<AsideInterface> = ({ schema }) => {
   };
 
   return (
-    <section className="block p-2 text-left">
+    <section className="block p-2 text-left min-w-0">
       {!!docItems.length && (
         <div
           className="cursor-pointer hover:underline"

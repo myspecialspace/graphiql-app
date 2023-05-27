@@ -1,13 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export const mainSlice = createSlice({
   name: 'main',
   initialState: {
-    data: null,
+    url: 'https://countries.trevorblades.com',
+    isDocsOpen: false,
   },
   reducers: {
-    setData: (state, { payload }) => {
-      state.data = payload;
+    setUrl: (state, { payload }: PayloadAction<string>) => {
+      state.url = payload;
+    },
+    setIsDocsOpen: (state, { payload }: PayloadAction<boolean>) => {
+      state.isDocsOpen = payload;
     },
   },
 });

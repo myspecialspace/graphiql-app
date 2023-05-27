@@ -9,6 +9,7 @@ import { slide as Menu } from 'react-burger-menu';
 import { burgerStyles } from './burger-styles';
 import burgerIcon from '@/assets/icons/burger.svg';
 import logoIcon from '@/assets/icons/logo.svg';
+import { SIGNIN_ROUTE, SIGNUP_ROUTE } from '@/helpers/constants';
 
 export const Header: FC = () => {
   const { t } = useTranslation();
@@ -37,11 +38,14 @@ export const Header: FC = () => {
         </>
       );
     } else {
+      const isSigninPage = location.pathname === SIGNIN_ROUTE;
+      const isSignupPage = location.pathname === SIGNUP_ROUTE;
+
       return (
         <>
           <SelectLanguage />
-          <HeaderButton text={t('signIn')} path="/signin" />
-          <HeaderButton text={t('signUp')} path="/signup" />
+          {!isSigninPage && <HeaderButton text={t('signIn')} path="/signin" />}
+          {!isSignupPage && <HeaderButton text={t('signUp')} path="/signup" />}
         </>
       );
     }

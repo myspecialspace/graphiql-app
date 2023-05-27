@@ -12,7 +12,7 @@ interface Props {
 
 export const ItemField: FC<Props> = ({ field, selectType, onSelect }) => {
   return (
-    <div className="flex whitespace-nowrap">
+    <div className="flex flex-wrap mb-4">
       <span
         className="cursor-pointer text-sky-600 hover:underline"
         onClick={() =>
@@ -22,8 +22,10 @@ export const ItemField: FC<Props> = ({ field, selectType, onSelect }) => {
         {field.name}
       </span>
       {'args' in field && !!field.args?.length && (
-        <span className="flex">
-          (<ItemFieldArgs args={field.args} onSelect={onSelect} />)
+        <span className="flex whitespace-nowrap">
+          <span>(</span>
+          <ItemFieldArgs args={field.args} onSelect={onSelect} />
+          <span>)</span>
         </span>
       )}
       <span>

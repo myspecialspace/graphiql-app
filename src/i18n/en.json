@@ -34,5 +34,6 @@
   "logIn": "Log in",
   "schemaDescription": "A GraphQL schema provides a root type for each kind of operation.",
   "goToMain": "Go to Main",
-  "errorNotification": "An error has occurred"
+  "errorNotification": "An error has occurred",
+  "Input_your_email": "Input your email..."
 }

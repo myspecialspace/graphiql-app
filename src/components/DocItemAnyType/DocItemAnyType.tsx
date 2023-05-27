@@ -50,5 +50,22 @@ export const DocItemAnyType: FC<Props> = ({ item, onSelect }) => {
     );
   }
 
+  if (item.kind === 'ENUM') {
+    return (
+      <div>
+        <DocItemName name={item.name} />
+        <div className="flex items-center text-gray-600">
+          <SchemaFieldsIcon />
+          <div className="ml-2">Enum values</div>
+        </div>
+        {(item.enumValues || []).map((enumValue) => (
+          <div key={enumValue.name} className="text-sky-600 mb-4">
+            {enumValue.name}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   return null;
 };
