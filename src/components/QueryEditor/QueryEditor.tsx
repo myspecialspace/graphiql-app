@@ -9,6 +9,7 @@ import { CopyIcon } from '../common/icons/CopyIcon';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { api } from '@/api';
 import PlusIcon from '../common/icons/PlusIcon';
+import DeleteIcon from '../common/icons/DeleteIcon';
 
 interface QueryEditorProps {
   tabValues: string[] | undefined;
@@ -79,6 +80,21 @@ export const QueryEditor = ({
     setCurrentTab(currentTab + 1);
   };
 
+  const deleteTab = () => {
+    if (tabValues) {
+      const newTabValues = tabValues.filter((_, index) => index !== currentTab);
+      setTabValues(newTabValues);
+
+      if (newTabValues.length === 1) {
+        setCurrentTab(0);
+        return;
+      }
+
+      const newTab = currentTab !== 0 ? currentTab - 1 : currentTab;
+      setCurrentTab(newTab);
+    }
+  };
+
   return (
     <div className="text-left grow max-w-[50%]">
       <div className="flex">
@@ -114,6 +130,13 @@ export const QueryEditor = ({
             theme={ButtonTheme.SECONDARY}
           >
             <PlusIcon />
+          </HeaderButton>
+          <HeaderButton
+            onClick={deleteTab}
+            text=""
+            theme={ButtonTheme.SECONDARY}
+          >
+            <DeleteIcon />
           </HeaderButton>
         </div>
       </div>

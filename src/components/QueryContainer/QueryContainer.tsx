@@ -10,11 +10,13 @@ const QueryContainer = () => {
   const [tabValues, setTabValues] = useDebounceState<string[]>(['']);
   return (
     <>
-      <TabList
-        tabs={tabValues}
-        currentTab={currentTab}
-        setCurrentTab={setCurrentTab}
-      />
+      {tabValues && tabValues.length > 1 && (
+        <TabList
+          tabs={tabValues}
+          currentTab={currentTab}
+          setCurrentTab={setCurrentTab}
+        />
+      )}
       <QueryEditor
         setResponse={setResponse}
         setTabValues={setTabValues}
