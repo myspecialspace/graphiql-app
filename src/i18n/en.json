@@ -33,5 +33,6 @@
   "haveAccount": "Already have an account?",
   "logIn": "Log in",
   "schemaDescription": "A GraphQL schema provides a root type for each kind of operation.",
-  "goToMain": "Go to Main"
+  "goToMain": "Go to Main",
+  "errorNotification": "An error has occurred"
 }

@@ -18,29 +18,25 @@ interface AsideInterface {
 
 const Aside: FC<AsideInterface> = ({ schema }) => {
   const { t } = useTranslation();
-  const [docItems, setDocItems] = useState<OnSelectData[]>([]); //наш пройденный путь, закидываем рутовый объект по умолчанию  // DOCS_ROOT_ITEM,
+  const [docItems, setDocItems] = useState<OnSelectData[]>([]);
 
-  // текущий элемент = последний элемент из хлебных крошек
   const docItem = docItems[docItems.length - 1];
   const prevDocItem = docItems[docItems.length - 2];
-  //в Types находим name: Query = типов нет?! т.к. запрос описываем по-своему
+
   const findType = (name: string) => {
     return schema.types.find((type) => type.name === name);
   };
 
-  //обработчик клика
   const onSelect: OnSelectFn = (data) => {
     setDocItems([...docItems, data]);
   };
 
   const onSelectRoot = (name: string) => {
-    // findType by name in schema
     const item = findType(name)!;
 
-    // set nextDocItems = [...docItems, type];
     setDocItems([...docItems, { type: SelectType.ROOT, item }]);
   };
-  // срезаем(удаляем) последний элемент из DocItems
+
   const onBack = () => {
     setDocItems(docItems.slice(0, -1));
   };

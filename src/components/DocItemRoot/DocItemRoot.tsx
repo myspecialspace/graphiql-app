@@ -7,7 +7,7 @@ interface Props {
 }
 
 export type OnSelectFn = (name: string) => void;
-// для Root Types и query: Query
+
 export const DocItemRoot: FC<Props> = ({ name, onSelect }) => {
   return (
     <div>

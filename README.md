@@ -14,12 +14,11 @@ https://graphiql-team.netlify.app/
 - React
 - React-redux
 - Tailwind
-- GraphQ
+- GraphQl
 - Codemirror
 - Firebase
 - React-hook-form
 - i18next
-
 
 ## Deployment
 

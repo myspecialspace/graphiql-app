@@ -6,8 +6,6 @@ import {
   IntrospectionOutputTypeRef,
 } from 'graphql';
 import { OnSelectFn, SelectType } from '../DocItem/DocItem';
-
-// компонент кот. рисует return type (Continent, [Continent!]!)
 interface Props {
   item: IntrospectionInputTypeRef | IntrospectionOutputTypeRef;
   selectType: SelectType.INPUT | SelectType.OUTPUT;

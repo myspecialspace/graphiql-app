@@ -70,7 +70,7 @@ export const Header: FC = () => {
         <div className="flex flex-row items-center justify-between  h-full">
           <div className="logo px-4 h-full flex items-center">
             <Link to="/">
-            <img className="block pt-2" src={logoIcon} alt="logo" />
+              <img className="block pt-2" src={logoIcon} alt="logo" />
             </Link>
           </div>
           {!isMobile && (

@@ -11,7 +11,6 @@ interface Props {
 }
 
 export const DocItemAnyType: FC<Props> = ({ item, onSelect }) => {
-  console.log('DocItemAnyType', item);
   if (item.kind === 'SCALAR') {
     return (
       <div>
