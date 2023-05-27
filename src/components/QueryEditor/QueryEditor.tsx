@@ -15,10 +15,13 @@ interface QueryEditorProps {
   setResponse: (response: string) => void;
 }
 
+interface editorValue {
+  value: string;
+}
+
 export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
-  const [stateValue, debounceSetState] = useDebounceState<string>(
-    [1, 2, 3, 4, 5].map(() => '\n').join('')
-  );
+  const [tabValues, setTabValues] = useDebounceState<string[]>(['hello']);
+  const [currentTab, setCurrentTab] = useState<number>(0);
   const [headersValue, setHeadersValue] = useState<string>(
     JSON.stringify({ 'Content-Type': 'application/json' })
   );
@@ -33,7 +36,15 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
   };
 
   const onChange = (value: string) => {
-    debounceSetState(value);
+    if (tabValues) {
+      const updatedValues = tabValues.map((tabValue, index) => {
+        if (index === currentTab) {
+          return value;
+        }
+        return tabValue;
+      });
+      setTabValues(updatedValues);
+    }
   };
 
   const onHeadersChange = (value: string) => {
@@ -49,12 +60,20 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
       method: 'POST',
       headers: JSON.parse(headersValue),
       data: JSON.stringify({
-        query: stateValue,
+        query: tabValues,
         variables: JSON.parse(variablesValue),
       }),
     })
       .then((res) => res.data)
       .then((data) => setResponse(JSON.stringify(data, null, 2)));
+  };
+
+  const onAddNewTab = () => {
+    if (tabValues) {
+      const newTabValues = [...tabValues, 'Hello!'];
+      setTabValues(newTabValues);
+    }
+    setCurrentTab((prevTab) => prevTab + 1);
   };
 
   return (
@@ -65,8 +84,9 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
           style={{ height: 'calc(100vh - 168px)' }}
         >
           <ReactCodeMirror
-            value={stateValue}
+            value={tabValues ? tabValues[currentTab] : ''}
             theme="light"
+            height="100%"
             placeholder={'Type a Query'}
             basicSetup={true}
             extensions={[graphql()]}
@@ -79,14 +99,14 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
             <PlayIcon />
           </HeaderButton>
 
-          <CopyToClipboard text={stateValue || ''}>
+          <CopyToClipboard text={tabValues ? tabValues[currentTab] : ''}>
             <HeaderButton text="" theme={ButtonTheme.SECONDARY}>
               <CopyIcon />
             </HeaderButton>
           </CopyToClipboard>
 
           <HeaderButton
-            onClick={() => null}
+            onClick={onAddNewTab}
             text=""
             theme={ButtonTheme.SECONDARY}
           >
