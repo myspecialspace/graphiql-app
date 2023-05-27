@@ -33,7 +33,9 @@ export const WelcomePage: FC = () => {
                 height="100px"
               />
               <h3 className="font-semibold text-gray-600">{t('teamLead')}</h3>
-              <p className="font-bold text-gray-900">{t('name_1')}</p>
+              <p className="font-bold text-gray-900 hover:scale-150 ease-out duration-500 hover:-rotate-6 hover:text-pink-500">
+                {t('name_1')}
+              </p>
               <div className="flex justify-center">
                 <small className="italic text-gray-600">(myspecialspace)</small>
               </div>
@@ -51,7 +53,10 @@ export const WelcomePage: FC = () => {
                 height="100px"
               />
               <h3 className="font-semibold text-gray-600">{t('developer')}</h3>
-              <p className="font-bold text-gray-900"> {t('name_2')}</p>
+              <p className="font-bold text-gray-900 hover:scale-150 ease-out duration-500 hover:text-yellow-500">
+                {' '}
+                {t('name_2')}
+              </p>
               <div className="flex justify-center">
                 <small className="italic text-gray-600">(Clearenough)</small>
               </div>
@@ -66,7 +71,9 @@ export const WelcomePage: FC = () => {
                 height="100px"
               />
               <h3 className="font-semibold text-gray-600">{t('developer')}</h3>
-              <p className="font-bold text-gray-900">{t('name_3')}</p>
+              <p className="font-bold text-gray-900 hover:scale-150 ease-out duration-500 hover:rotate-6 hover:text-pink-500">
+                {t('name_3')}
+              </p>
               <div className="flex justify-center items-center">
                 <small className="italic text-gray-600">(ElizabethT7)</small>
               </div>
