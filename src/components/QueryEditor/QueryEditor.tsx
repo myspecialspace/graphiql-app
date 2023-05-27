@@ -147,17 +147,6 @@ export const QueryEditor = ({
           >
             <DeleteIcon />
           </HeaderButton>
-          <div className="flex flex-col sticky sm:static top-16 pt-1 sm:pt-0">
-            <HeaderButton onClick={onClick} text="">
-              <PlayIcon />
-            </HeaderButton>
-
-            <CopyToClipboard text={tabValues ? tabValues[currentTab] : ''}>
-              <HeaderButton text="" theme={ButtonTheme.SECONDARY}>
-                <CopyIcon />
-              </HeaderButton>
-            </CopyToClipboard>
-          </div>
         </div>
       </div>
       <div className="flex justify-between">
