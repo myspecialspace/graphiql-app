@@ -9,6 +9,7 @@ import { PlayIcon } from '../common/icons/PlayIcon';
 import { CopyIcon } from '../common/icons/CopyIcon';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { api } from '@/api';
+import PlusIcon from '../common/icons/PlusIcon';
 
 interface QueryEditorProps {
   setResponse: (response: string) => void;
@@ -83,6 +84,14 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
               <CopyIcon />
             </HeaderButton>
           </CopyToClipboard>
+
+          <HeaderButton
+            onClick={() => null}
+            text=""
+            theme={ButtonTheme.SECONDARY}
+          >
+            <PlusIcon />
+          </HeaderButton>
         </div>
       </div>
       <div className="flex justify-between">
