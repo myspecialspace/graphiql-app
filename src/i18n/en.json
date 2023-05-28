@@ -44,5 +44,8 @@
   "inputYourEmail": "Input your email...",
   "variables": "Variables",
   "headers": "Headers",
-  "enterApi": "Enter graphql API"
+  "enterApi": "Enter graphql API",
+  "typeQuery": "Type a query",
+  "responseHere": "Response here",
+  "tab": "Tab"
 }
