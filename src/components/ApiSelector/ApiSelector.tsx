@@ -1,8 +1,10 @@
+import { ChangeEvent, FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import { mainSlice } from '@/store/slices/main';
 import { useAppDispatch, useAppSelector } from '@/store/store';
-import { ChangeEvent, FC } from 'react';
 
 export const ApiSelector: FC = () => {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const url = useAppSelector((state) => state.main.url);
 
@@ -20,7 +22,7 @@ export const ApiSelector: FC = () => {
           value={url}
           className="form__input !shadow-none"
           onChange={onChange}
-          placeholder="Enter graphql API"
+          placeholder={t('enterApi')!}
         />
       </div>
     </div>

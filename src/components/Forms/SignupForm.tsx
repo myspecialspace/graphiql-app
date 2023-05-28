@@ -53,14 +53,15 @@ export const SignupForm: FC = () => {
         <label htmlFor="name">
           <input
             {...register('name', {
-              required: 'Please input your name',
+              required: t('errorInputName')!,
               minLength: {
                 value: 3,
-                message: 'Name should be minimum 3 symbols',
+                message: t('errorName'),
               },
             })}
             className="form__input"
-            placeholder="Enter your name..."
+            id="name"
+            placeholder={t('enterName')!}
           />
           <div className="form__error">
             {errors?.name && <p>{errors?.name?.message || 'Error!'}</p>}
@@ -69,7 +70,7 @@ export const SignupForm: FC = () => {
         <label htmlFor="inputEmail">
           <input
             {...register('email', {
-              required: 'Please input your E-mail!',
+              required: t('errorInputEmail')!,
               minLength: {
                 value: 8,
                 message: t('error'),
@@ -81,8 +82,9 @@ export const SignupForm: FC = () => {
               },
             })}
             type="email"
+            id="inputEmail"
             className="form__input"
-            placeholder="Enter E-mail..."
+            placeholder={t('inputYourEmail')!}
           />
           <div className="form__error">
             {errors?.email && <p>{errors?.email?.message || 'Error!'}</p>}
@@ -91,7 +93,7 @@ export const SignupForm: FC = () => {
         <label htmlFor="inputPassword">
           <input
             {...register('password', {
-              required: 'Please input your password!',
+              required: t('errorInputPassword')!,
               minLength: {
                 value: 8,
                 message: t('error'),
@@ -103,8 +105,9 @@ export const SignupForm: FC = () => {
               },
             })}
             type="password"
+            id="inputPassword"
             className="form__input"
-            placeholder="Enter password"
+            placeholder={t('enterPassword')!}
           />
           <div className="form__error">
             {errors?.password && <p>{errors?.password?.message || 'Error!'}</p>}

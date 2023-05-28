@@ -15,10 +15,14 @@ export const SelectLanguage: FC = () => {
       id="language"
       defaultValue={ls.getLang() || 'en'}
       onChange={(e) => changeLanguage(e.target.value)}
-      className="flex h-full rounded-md border-0 bg-transparent p-0 text-xl text-gray-500 focus:ring-inset focus:outline-none sm:mr-6 cursor-pointer"
+      className="flex w-24 h-full rounded-md border-0 bg-transparent p-0 mb-6 text-xl text-grey-100 sm:text-gray-500 focus:ring-inset focus:outline-none sm:mr-6 cursor-pointer"
     >
-      <option value="en">English</option>
-      <option value="ru">Русский</option>
+      <option className="text-xl text-gray-500" value="en">
+        English
+      </option>
+      <option className="text-xl text-gray-500" value="ru">
+        Русский
+      </option>
     </select>
   );
 };

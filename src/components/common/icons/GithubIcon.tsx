@@ -9,7 +9,7 @@ export const GithubIcon: FC = () => {
       version="1.1"
       viewBox="0 0 1024 1024"
       width="1024px"
-      className="w-6 h-6"
+      className="w-6 h-6 cursor-pointer hover:scale-150 ease-out duration-500"
       xmlSpace="preserve"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"

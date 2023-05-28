@@ -11,6 +11,7 @@ import { api } from '@/api';
 import PlusIcon from '../common/icons/PlusIcon';
 import { useResponsive } from '@/hooks/responsive';
 import { useAppSelector } from '@/store/store';
+import { useTranslation } from 'react-i18next';
 
 interface QueryEditorProps {
   tabValues: string[] | undefined;
@@ -27,6 +28,7 @@ export const QueryEditor = ({
   tabValues,
   currentTab,
 }: QueryEditorProps) => {
+  const { t } = useTranslation();
   const url = useAppSelector((state) => state.main.url);
   const [headersValue, setHeadersValue] = useState<string>(
     JSON.stringify({ 'Content-Type': 'application/json' })
@@ -132,8 +134,8 @@ export const QueryEditor = ({
       </div>
       <div className="flex justify-between">
         <div className="flex gap-x-5 p-5 text-gray-700">
-          <button onClick={() => setVariables(true)}>Variables</button>
-          <button onClick={() => setVariables(false)}>Headers</button>
+          <button onClick={() => setVariables(true)}>{t('variables')}</button>
+          <button onClick={() => setVariables(false)}>{t('headers')}</button>
         </div>
         <button onClick={handleClick}>
           {!isOpen ? <ChevronDownIcon /> : <ChevronUpIcon />}
