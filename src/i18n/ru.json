@@ -42,5 +42,8 @@
   "inputYourEmail": "Введите email...",
   "variables": "Переменные",
   "headers": "Заголовки",
-  "enterApi": "Введите graphql API"
+  "enterApi": "Введите graphql API",
+  "typeQuery": "Ваш запрос",
+  "responseHere": "Ответ",
+  "tab": "Вкладка"
 }

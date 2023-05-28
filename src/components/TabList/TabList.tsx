@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import uniqid from 'uniqid';
 import { ButtonTheme, CustomButton } from '../common/CustomButton';
 import DeleteIcon from '../common/icons/DeleteIcon';
@@ -15,6 +16,8 @@ const TabList = ({
   setCurrentTab,
   setTabValues,
 }: TabListProps) => {
+  const { t } = useTranslation();
+
   const onClick = (index: number) => {
     setCurrentTab(index);
     localStorage.setItem('CURRENT_TAB', JSON.stringify(index));
@@ -63,7 +66,7 @@ const TabList = ({
                   }
                   onClick={() => onClick(index)}
                 >
-                  <span>tab</span>
+                  <span>{t('tab')}</span>
                 </CustomButton>
                 <CustomButton
                   onClick={() => deleteTab(index)}
