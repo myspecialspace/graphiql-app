@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+#root {
+  max-width: 1920px;
+  text-align: center;
+}
+
+.form__input {
+  @apply mt-3 block w-full h-12 px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-lg placeholder-slate-400
+  focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500
+  disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+  invalid:border-pink-500 invalid:text-pink-600
+  focus:invalid:border-pink-500 focus:invalid:ring-pink-500 placeholder:italic placeholder:text-slate-400;
+}
+
+.form__error {
+  @apply w-full h-6 text-sm leading-4 text-pink-600;
+}
+
+.form__button {
+  @apply w-full h-12 py-1 px-3 mt-4 border-2 rounded-lg border-purple-600 bg-purple-600 text-white hover:border-purple-800 hover:bg-purple-800 hover:shadow-lg hover:shadow-purple-600;
+}
+
+.lds-ring {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  position: relative;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #c175ff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #c175ff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
