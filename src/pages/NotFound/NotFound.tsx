@@ -1,3 +1,4 @@
+import { Layout } from '@/components/common/Layout';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -5,7 +6,7 @@ import { Link } from 'react-router-dom';
 export const NotFoundPage: FC = () => {
   const { t } = useTranslation();
   return (
-    <>
+    <Layout>
       <main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
         <div className="text-center">
           <p className="text-base font-semibold text-purple-700 ">404</p>
@@ -29,6 +30,6 @@ export const NotFoundPage: FC = () => {
           </div>
         </div>
       </main>
-    </>
+    </Layout>
   );
 };
