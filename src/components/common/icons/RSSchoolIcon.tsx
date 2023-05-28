@@ -5,7 +5,7 @@ export const RSSchoolIcon: FC = () => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 552.85 198.67"
-      className="w-24 h-6 cursor-pointer"
+      className="w-24 h-6 cursor-pointer hover:scale-150 ease-out duration-500"
     >
       <title>rs_school</title>
       <g data-name="Layer 2">
