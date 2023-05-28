@@ -32,9 +32,10 @@ export const MainPage: FC = () => {
           <SideBar />
           {tabValues && tabValues.length > 1 && (
             <TabList
-              tabs={tabValues}
+              tabValues={tabValues}
               currentTab={currentTab}
               setCurrentTab={setCurrentTab}
+              setTabValues={setTabValues}
             />
           )}
           <QueryEditor

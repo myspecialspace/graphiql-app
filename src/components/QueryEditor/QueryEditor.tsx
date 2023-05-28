@@ -9,7 +9,6 @@ import { CopyIcon } from '../common/icons/CopyIcon';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { api } from '@/api';
 import PlusIcon from '../common/icons/PlusIcon';
-import DeleteIcon from '../common/icons/DeleteIcon';
 import { useResponsive } from '@/hooks/responsive';
 import { useAppSelector } from '@/store/store';
 
@@ -92,25 +91,6 @@ export const QueryEditor = ({
     localStorage.setItem('CURRENT_TAB', JSON.stringify(currentTab + 1));
   };
 
-  const deleteTab = () => {
-    if (currentTab === 0) return;
-
-    if (tabValues) {
-      const newTabValues = tabValues.filter((_, index) => index !== currentTab);
-      setTabValues(newTabValues);
-      localStorage.setItem('TAB_VALUES', JSON.stringify(newTabValues));
-      if (newTabValues.length === 1) {
-        setCurrentTab(0);
-        localStorage.setItem('CURRENT_TAB', JSON.stringify(0));
-        return;
-      }
-
-      const newTab = currentTab !== 0 ? currentTab - 1 : currentTab;
-      setCurrentTab(newTab);
-      localStorage.setItem('CURRENT_TAB', JSON.stringify(newTab));
-    }
-  };
-
   return (
     <div className="text-left grow sm:max-w-[50%]">
       <div className="flex">
@@ -146,13 +126,6 @@ export const QueryEditor = ({
             theme={ButtonTheme.SECONDARY}
           >
             <PlusIcon />
-          </HeaderButton>
-          <HeaderButton
-            onClick={deleteTab}
-            text=""
-            theme={ButtonTheme.SECONDARY}
-          >
-            <DeleteIcon />
           </HeaderButton>
         </div>
       </div>
