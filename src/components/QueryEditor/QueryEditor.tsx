@@ -1,6 +1,5 @@
 import ReactCodeMirror from '@uiw/react-codemirror';
 import { graphql } from 'cm6-graphql';
-import useDebounceState from '../../hooks/useDebounceState';
 import { useState } from 'react';
 import { ChevronDownIcon } from '../common/icons/ChevronDownIcon';
 import { ChevronUpIcon } from '../common/icons/ChevronUpIcon';
@@ -9,20 +8,29 @@ import { PlayIcon } from '../common/icons/PlayIcon';
 import { CopyIcon } from '../common/icons/CopyIcon';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { api } from '@/api';
+import PlusIcon from '../common/icons/PlusIcon';
+import DeleteIcon from '../common/icons/DeleteIcon';
 import { useResponsive } from '@/hooks/responsive';
 import { useAppSelector } from '@/store/store';
 import { useTranslation } from 'react-i18next';
 
 interface QueryEditorProps {
+  tabValues: string[] | undefined;
+  currentTab: number;
   setResponse: (response: string) => void;
+  setCurrentTab: (tab: number) => void;
+  setTabValues: (tabValues: string[]) => void;
 }
 
-export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
+export const QueryEditor = ({
+  setResponse,
+  setTabValues,
+  setCurrentTab,
+  tabValues,
+  currentTab,
+}: QueryEditorProps) => {
   const { t } = useTranslation();
   const url = useAppSelector((state) => state.main.url);
-  const [stateValue, debounceSetState] = useDebounceState<string>(
-    [1, 2, 3, 4, 5].map(() => '\n').join('')
-  );
   const [headersValue, setHeadersValue] = useState<string>(
     JSON.stringify({ 'Content-Type': 'application/json' })
   );
@@ -38,7 +46,16 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
   };
 
   const onChange = (value: string) => {
-    debounceSetState(value);
+    if (tabValues) {
+      const updatedValues = tabValues.map((tabValue, index) => {
+        if (index === currentTab) {
+          return value;
+        }
+        return tabValue;
+      });
+      setTabValues(updatedValues);
+      localStorage.setItem('TAB_VALUES', JSON.stringify(updatedValues));
+    }
   };
 
   const onHeadersChange = (value: string) => {
@@ -56,7 +73,7 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
       method: 'POST',
       headers: JSON.parse(headersValue),
       data: JSON.stringify({
-        query: stateValue,
+        query: tabValues,
         variables: JSON.parse(variablesValue),
       }),
     })
@@ -67,16 +84,46 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
       });
   };
 
+  const onAddNewTab = () => {
+    if (tabValues) {
+      const newTabValues = [...tabValues, ''];
+      setTabValues(newTabValues);
+      localStorage.setItem('TAB_VALUES', JSON.stringify(newTabValues));
+    }
+    setCurrentTab(currentTab + 1);
+    localStorage.setItem('CURRENT_TAB', JSON.stringify(currentTab + 1));
+  };
+
+  const deleteTab = () => {
+    if (currentTab === 0) return;
+
+    if (tabValues) {
+      const newTabValues = tabValues.filter((_, index) => index !== currentTab);
+      setTabValues(newTabValues);
+      localStorage.setItem('TAB_VALUES', JSON.stringify(newTabValues));
+      if (newTabValues.length === 1) {
+        setCurrentTab(0);
+        localStorage.setItem('CURRENT_TAB', JSON.stringify(0));
+        return;
+      }
+
+      const newTab = currentTab !== 0 ? currentTab - 1 : currentTab;
+      setCurrentTab(newTab);
+      localStorage.setItem('CURRENT_TAB', JSON.stringify(newTab));
+    }
+  };
+
   return (
     <div className="text-left grow sm:max-w-[50%]">
       <div className="flex">
         <div
-          className="flex overflow-auto h-full w-full"
-          style={{ height: isMobile ? '' : 'calc(100vh - 236px)' }}
+          className="flex overflow-auto w-full sm:h-full"
+          style={{ height: isMobile ? '' : 'calc(100vh)' }}
         >
           <ReactCodeMirror
-            value={stateValue}
+            value={tabValues ? tabValues[currentTab] : ''}
             theme="light"
+            height="100%"
             placeholder={'Type a Query'}
             basicSetup={true}
             extensions={[graphql()]}
@@ -85,17 +132,30 @@ export const QueryEditor = ({ setResponse }: QueryEditorProps) => {
           />
         </div>
         <div className="flex flex-col">
-          <div className="flex flex-col sticky sm:static top-16 pt-1 sm:pt-0">
-            <HeaderButton onClick={onClick} text="">
-              <PlayIcon />
-            </HeaderButton>
+          <HeaderButton onClick={onClick} text="">
+            <PlayIcon />
+          </HeaderButton>
 
-            <CopyToClipboard text={stateValue || ''}>
-              <HeaderButton text="" theme={ButtonTheme.SECONDARY}>
-                <CopyIcon />
-              </HeaderButton>
-            </CopyToClipboard>
-          </div>
+          <CopyToClipboard text={tabValues ? tabValues[currentTab] : ''}>
+            <HeaderButton text="" theme={ButtonTheme.SECONDARY}>
+              <CopyIcon />
+            </HeaderButton>
+          </CopyToClipboard>
+
+          <HeaderButton
+            onClick={onAddNewTab}
+            text=""
+            theme={ButtonTheme.SECONDARY}
+          >
+            <PlusIcon />
+          </HeaderButton>
+          <HeaderButton
+            onClick={deleteTab}
+            text=""
+            theme={ButtonTheme.SECONDARY}
+          >
+            <DeleteIcon />
+          </HeaderButton>
         </div>
       </div>
       <div className="flex justify-between">

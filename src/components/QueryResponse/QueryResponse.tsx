@@ -5,12 +5,11 @@ interface QueryResponseProps {
   response: string;
 }
 
-const EMPTY_VALUE = [1, 2, 3, 4, 5].map(() => '\n').join('');
-
 const QueryResponse = ({ response }: QueryResponseProps) => {
   return (
     <ReactCodeMirror
-      value={response || EMPTY_VALUE}
+      value={response}
+      height="90%"
       theme="light"
       placeholder={'Response here'}
       basicSetup={true}
