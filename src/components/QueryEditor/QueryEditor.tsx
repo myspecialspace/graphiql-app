@@ -65,20 +65,21 @@ export const QueryEditor = ({
 
   const onClick = () => {
     setResponse('');
-
-    api(url, {
-      method: 'POST',
-      headers: JSON.parse(headersValue),
-      data: JSON.stringify({
-        query: tabValues,
-        variables: JSON.parse(variablesValue),
-      }),
-    })
-      .then((res) => res.data)
-      .then((data) => setResponse(JSON.stringify(data, null, 2)))
-      .catch((error) => {
-        setResponse(JSON.stringify(error.response.data, null, 2));
-      });
+    if (tabValues) {
+      api(url, {
+        method: 'POST',
+        headers: JSON.parse(headersValue),
+        data: JSON.stringify({
+          query: tabValues[currentTab],
+          variables: JSON.parse(variablesValue),
+        }),
+      })
+        .then((res) => res.data)
+        .then((data) => setResponse(JSON.stringify(data, null, 2)))
+        .catch((error) => {
+          setResponse(JSON.stringify(error.response.data, null, 2));
+        });
+    }
   };
 
   const onAddNewTab = () => {
