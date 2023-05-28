@@ -115,8 +115,8 @@ export const QueryEditor = ({
     <div className="text-left grow sm:max-w-[50%]">
       <div className="flex">
         <div
-          className="flex overflow-auto h-full w-full"
-          style={{ height: isMobile ? '' : 'calc(100vh - 236px)' }}
+          className="flex overflow-auto w-full sm:h-full"
+          style={{ height: isMobile ? '' : 'calc(100vh)' }}
         >
           <ReactCodeMirror
             value={tabValues ? tabValues[currentTab] : ''}
