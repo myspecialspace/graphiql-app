@@ -114,8 +114,8 @@ export const QueryEditor = ({
   };
 
   return (
-    <div className="text-left grow sm:max-w-[50%]">
-      <div className="flex">
+    <div className="text-left border shadow-2xl mx-3 mb-10 rounded-lg shadow-gray-500/50 grow sm:max-w-[50%]">
+      <div className="flex p-3">
         <div
           className="flex overflow-auto w-full sm:h-full"
           style={{ height: isMobile ? '' : 'calc(100vh)' }}
@@ -142,22 +142,17 @@ export const QueryEditor = ({
             </CustomButton>
           </CopyToClipboard>
 
-          <CustomButton
-            onClick={onAddNewTab}
-            theme={ButtonTheme.SECONDARY}
-          >
+          <CustomButton onClick={onAddNewTab} theme={ButtonTheme.SECONDARY}>
             <PlusIcon />
           </CustomButton>
-          <CustomButton
-            onClick={deleteTab}
-            theme={ButtonTheme.SECONDARY}
-          >
+          <CustomButton onClick={deleteTab} theme={ButtonTheme.SECONDARY}>
             <DeleteIcon />
           </CustomButton>
         </div>
       </div>
-      <div className="flex justify-between">
-        <div className="flex gap-x-5 p-5 text-gray-700">
+      <div className="h-px bg-gray-200"></div>
+      <div className="flex justify-between p-3">
+        <div className="flex gap-x-5 p-3 text-gray-700">
           <button onClick={() => setVariables(true)}>{t('variables')}</button>
           <button onClick={() => setVariables(false)}>{t('headers')}</button>
         </div>
@@ -166,7 +161,7 @@ export const QueryEditor = ({
         </button>
       </div>
       {isOpen && (
-        <div>
+        <div className="p-3">
           {variables ? (
             <div>
               <ReactCodeMirror
