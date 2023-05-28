@@ -9,7 +9,7 @@ const QueryResponse = ({ response }: QueryResponseProps) => {
   return (
     <ReactCodeMirror
       value={response}
-      height="100%"
+      height="90%"
       theme="light"
       placeholder={'Response here'}
       basicSetup={true}

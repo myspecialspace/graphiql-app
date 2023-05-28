@@ -1,4 +1,3 @@
-import useDebounceState from '@/hooks/useDebounceState';
 import { useState } from 'react';
 import { QueryEditor } from '../QueryEditor/QueryEditor';
 import QueryResponse from '../QueryResponse/QueryResponse';
@@ -7,7 +6,7 @@ import TabList from '../TabList/TabList';
 const QueryContainer = () => {
   const [response, setResponse] = useState<string>('');
   const [currentTab, setCurrentTab] = useState<number>(0);
-  const [tabValues, setTabValues] = useDebounceState<string[]>(['']);
+  const [tabValues, setTabValues] = useState<string[]>(['']);
   return (
     <>
       {tabValues && tabValues.length > 1 && (

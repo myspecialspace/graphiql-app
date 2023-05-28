@@ -52,6 +52,7 @@ export const QueryEditor = ({
         return tabValue;
       });
       setTabValues(updatedValues);
+      localStorage.setItem('TAB_VALUES', JSON.stringify(updatedValues));
     }
   };
 
@@ -85,22 +86,26 @@ export const QueryEditor = ({
     if (tabValues) {
       const newTabValues = [...tabValues, ''];
       setTabValues(newTabValues);
+      localStorage.setItem('TAB_VALUES', JSON.stringify(newTabValues));
     }
     setCurrentTab(currentTab + 1);
+    localStorage.setItem('CURRENT_TAB', JSON.stringify(currentTab + 1));
   };
 
   const deleteTab = () => {
     if (tabValues) {
       const newTabValues = tabValues.filter((_, index) => index !== currentTab);
       setTabValues(newTabValues);
-
+      localStorage.setItem('TAB_VALUES', JSON.stringify(newTabValues));
       if (newTabValues.length === 1) {
         setCurrentTab(0);
+        localStorage.setItem('CURRENT_TAB', JSON.stringify(0));
         return;
       }
 
       const newTab = currentTab !== 0 ? currentTab - 1 : currentTab;
       setCurrentTab(newTab);
+      localStorage.setItem('CURRENT_TAB', JSON.stringify(newTab));
     }
   };
 

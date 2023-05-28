@@ -7,8 +7,13 @@ interface TabListProps {
 }
 
 const TabList = ({ tabs, currentTab, setCurrentTab }: TabListProps) => {
+  const onClick = (index: number) => {
+    setCurrentTab(index);
+    localStorage.setItem('CURRENT_TAB', JSON.stringify(index));
+  };
+
   return (
-    <div>
+    <div className="flex flex-row overflow-scroll max-h-96 max-w-[50%] sm:flex-col sm:w-auto">
       {tabs
         ? tabs.map((_, index) => {
             return (
@@ -19,7 +24,7 @@ const TabList = ({ tabs, currentTab, setCurrentTab }: TabListProps) => {
                     ? ButtonTheme.ACTIVE
                     : ButtonTheme.SECONDARY
                 }
-                onClick={() => setCurrentTab(index)}
+                onClick={() => onClick(index)}
                 key={index}
               ></HeaderButton>
             );
