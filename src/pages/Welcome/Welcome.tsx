@@ -47,7 +47,7 @@ export const WelcomePage: FC = () => {
             <div className="flex flex-col items-center w-3/3 sm:w-1/3 p-3">
               <img
                 className="rounded-full"
-                src=""
+                src="https://i.ibb.co/GRCmwXc/Cropped-Image.png"
                 alt="photo"
                 width="100px"
                 height="100px"
