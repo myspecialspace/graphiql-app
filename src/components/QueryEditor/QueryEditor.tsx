@@ -93,6 +93,8 @@ export const QueryEditor = ({
   };
 
   const deleteTab = () => {
+    if (currentTab === 0) return;
+
     if (tabValues) {
       const newTabValues = tabValues.filter((_, index) => index !== currentTab);
       setTabValues(newTabValues);
