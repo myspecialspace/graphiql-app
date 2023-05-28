@@ -99,7 +99,7 @@ export const QueryEditor = ({
       <div className="flex p-3">
         <div
           className="flex overflow-auto w-full sm:h-full"
-          style={{ height: isMobile ? '' : 'calc(100vh)' }}
+          style={{ height: isMobile ? '' : 'calc(100vh - 235px)' }}
         >
           <ReactCodeMirror
             value={tabValues ? tabValues[currentTab] : ''}
@@ -116,18 +116,14 @@ export const QueryEditor = ({
           <CustomButton onClick={onClick}>
             <PlayIcon />
           </CustomButton>
-
           <CopyToClipboard text={tabValues ? tabValues[currentTab] : ''}>
             <CustomButton theme={ButtonTheme.SECONDARY}>
               <CopyIcon />
             </CustomButton>
           </CopyToClipboard>
-
           <CustomButton onClick={onAddNewTab} theme={ButtonTheme.SECONDARY}>
             <PlusIcon />
-
           </CustomButton>
-
         </div>
       </div>
       <div className="h-px bg-gray-200"></div>

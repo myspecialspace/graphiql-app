@@ -1,6 +1,5 @@
 import uniqid from 'uniqid';
-
-import { ButtonTheme, HeaderButton } from '../common/HeaderButton';
+import { ButtonTheme, CustomButton } from '../common/CustomButton';
 import DeleteIcon from '../common/icons/DeleteIcon';
 
 interface TabListProps {
@@ -51,29 +50,27 @@ const TabList = ({
   };
 
   return (
-    <div className="flex flex-row overflow-x-scroll max-h-96 max-w-[50%] sm:flex-col sm:w-auto sm:overflow-y-scroll">
+    <div className="flex flex-row overflow-x-scroll max-h-96 w-full sm:flex-col sm:w-auto sm:overflow-auto">
       {tabValues
         ? tabValues.map((_, index) => {
             return (
-              <div className="flex items-baseline">
-                <HeaderButton
-                  text={'tab'}
+              <div className="flex items-baseline" key={uniqid()}>
+                <CustomButton
                   theme={
                     currentTab === index
                       ? ButtonTheme.ACTIVE
                       : ButtonTheme.SECONDARY
                   }
                   onClick={() => onClick(index)}
-                  key={uniqid()}
-                ></HeaderButton>
-                <HeaderButton
+                >
+                  <span>tab</span>
+                </CustomButton>
+                <CustomButton
                   onClick={() => deleteTab(index)}
-                  text=""
                   theme={ButtonTheme.SECONDARY}
-                  key={uniqid()}
                 >
                   <DeleteIcon />
-                </HeaderButton>
+                </CustomButton>
               </div>
             );
           })
