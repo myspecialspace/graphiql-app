@@ -1,32 +1,80 @@
+import uniqid from 'uniqid';
+
 import { ButtonTheme, HeaderButton } from '../common/HeaderButton';
+import DeleteIcon from '../common/icons/DeleteIcon';
 
 interface TabListProps {
-  tabs: string[] | undefined;
+  tabValues: string[] | undefined;
   currentTab: number;
   setCurrentTab(tab: number): void;
+  setTabValues: (tabValues: string[]) => void;
 }
 
-const TabList = ({ tabs, currentTab, setCurrentTab }: TabListProps) => {
+const TabList = ({
+  currentTab,
+  tabValues,
+  setCurrentTab,
+  setTabValues,
+}: TabListProps) => {
   const onClick = (index: number) => {
     setCurrentTab(index);
     localStorage.setItem('CURRENT_TAB', JSON.stringify(index));
   };
 
+  const deleteTab = (tabNumber: number) => {
+    if (tabValues) {
+      const newTabValues = tabValues.filter((_, index) => index !== tabNumber);
+      setTabValues(newTabValues);
+      localStorage.setItem('TAB_VALUES', JSON.stringify(newTabValues));
+      if (newTabValues.length === 1) {
+        setCurrentTab(0);
+        localStorage.setItem('CURRENT_TAB', JSON.stringify(0));
+        return;
+      }
+
+      if (currentTab > tabNumber) {
+        setCurrentTab(currentTab - 1);
+        localStorage.setItem('CURRENT_TAB', JSON.stringify(currentTab - 1));
+        return;
+      }
+
+      if (currentTab < tabNumber) {
+        setCurrentTab(currentTab);
+        localStorage.setItem('CURRENT_TAB', JSON.stringify(currentTab));
+        return;
+      }
+
+      const newTab = currentTab !== 0 ? currentTab - 1 : currentTab;
+      setCurrentTab(newTab);
+      localStorage.setItem('CURRENT_TAB', JSON.stringify(newTab));
+    }
+  };
+
   return (
-    <div className="flex flex-row overflow-scroll max-h-96 max-w-[50%] sm:flex-col sm:w-auto">
-      {tabs
-        ? tabs.map((_, index) => {
+    <div className="flex flex-row overflow-x-scroll max-h-96 max-w-[50%] sm:flex-col sm:w-auto sm:overflow-y-scroll">
+      {tabValues
+        ? tabValues.map((_, index) => {
             return (
-              <HeaderButton
-                text={'tab'}
-                theme={
-                  currentTab === index
-                    ? ButtonTheme.ACTIVE
-                    : ButtonTheme.SECONDARY
-                }
-                onClick={() => onClick(index)}
-                key={index}
-              ></HeaderButton>
+              <div className="flex items-baseline">
+                <HeaderButton
+                  text={'tab'}
+                  theme={
+                    currentTab === index
+                      ? ButtonTheme.ACTIVE
+                      : ButtonTheme.SECONDARY
+                  }
+                  onClick={() => onClick(index)}
+                  key={uniqid()}
+                ></HeaderButton>
+                <HeaderButton
+                  onClick={() => deleteTab(index)}
+                  text=""
+                  theme={ButtonTheme.SECONDARY}
+                  key={uniqid()}
+                >
+                  <DeleteIcon />
+                </HeaderButton>
+              </div>
             );
           })
         : null}

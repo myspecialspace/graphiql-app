@@ -9,7 +9,6 @@ import { CopyIcon } from '../common/icons/CopyIcon';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { api } from '@/api';
 import PlusIcon from '../common/icons/PlusIcon';
-import DeleteIcon from '../common/icons/DeleteIcon';
 import { useResponsive } from '@/hooks/responsive';
 import { useAppSelector } from '@/store/store';
 import { useTranslation } from 'react-i18next';
@@ -68,20 +67,21 @@ export const QueryEditor = ({
 
   const onClick = () => {
     setResponse('');
-
-    api(url, {
-      method: 'POST',
-      headers: JSON.parse(headersValue),
-      data: JSON.stringify({
-        query: tabValues,
-        variables: JSON.parse(variablesValue),
-      }),
-    })
-      .then((res) => res.data)
-      .then((data) => setResponse(JSON.stringify(data, null, 2)))
-      .catch((error) => {
-        setResponse(JSON.stringify(error.response.data, null, 2));
-      });
+    if (tabValues) {
+      api(url, {
+        method: 'POST',
+        headers: JSON.parse(headersValue),
+        data: JSON.stringify({
+          query: tabValues[currentTab],
+          variables: JSON.parse(variablesValue),
+        }),
+      })
+        .then((res) => res.data)
+        .then((data) => setResponse(JSON.stringify(data, null, 2)))
+        .catch((error) => {
+          setResponse(JSON.stringify(error.response.data, null, 2));
+        });
+    }
   };
 
   const onAddNewTab = () => {
@@ -92,25 +92,6 @@ export const QueryEditor = ({
     }
     setCurrentTab(currentTab + 1);
     localStorage.setItem('CURRENT_TAB', JSON.stringify(currentTab + 1));
-  };
-
-  const deleteTab = () => {
-    if (currentTab === 0) return;
-
-    if (tabValues) {
-      const newTabValues = tabValues.filter((_, index) => index !== currentTab);
-      setTabValues(newTabValues);
-      localStorage.setItem('TAB_VALUES', JSON.stringify(newTabValues));
-      if (newTabValues.length === 1) {
-        setCurrentTab(0);
-        localStorage.setItem('CURRENT_TAB', JSON.stringify(0));
-        return;
-      }
-
-      const newTab = currentTab !== 0 ? currentTab - 1 : currentTab;
-      setCurrentTab(newTab);
-      localStorage.setItem('CURRENT_TAB', JSON.stringify(newTab));
-    }
   };
 
   return (
@@ -144,10 +125,9 @@ export const QueryEditor = ({
 
           <CustomButton onClick={onAddNewTab} theme={ButtonTheme.SECONDARY}>
             <PlusIcon />
+
           </CustomButton>
-          <CustomButton onClick={deleteTab} theme={ButtonTheme.SECONDARY}>
-            <DeleteIcon />
-          </CustomButton>
+
         </div>
       </div>
       <div className="h-px bg-gray-200"></div>
