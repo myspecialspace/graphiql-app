@@ -127,9 +127,6 @@ export const QueryEditor = ({
             <PlusIcon />
 
           </CustomButton>
-          <CustomButton onClick={deleteTab} theme={ButtonTheme.SECONDARY}>
-            <DeleteIcon />
-          </CustomButton>
 
         </div>
       </div>
