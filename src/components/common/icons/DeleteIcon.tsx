@@ -10,12 +10,12 @@ const DeleteIcon = () => {
       <path
         d="M1 1L12.9998 12.9997"
         stroke="currentColor"
-        stroke-width="1.5"
+        strokeWidth="1.5"
       ></path>
       <path
         d="M13 1L1.00079 13.0003"
         stroke="currentColor"
-        stroke-width="1.5"
+        strokeWidth="1.5"
       ></path>
     </svg>
   );
