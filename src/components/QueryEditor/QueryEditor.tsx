@@ -3,7 +3,7 @@ import { graphql } from 'cm6-graphql';
 import { useState } from 'react';
 import { ChevronDownIcon } from '../common/icons/ChevronDownIcon';
 import { ChevronUpIcon } from '../common/icons/ChevronUpIcon';
-import { ButtonTheme, HeaderButton } from '../common/HeaderButton';
+import { ButtonTheme, CustomButton } from '../common/CustomButton';
 import { PlayIcon } from '../common/icons/PlayIcon';
 import { CopyIcon } from '../common/icons/CopyIcon';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
@@ -132,30 +132,28 @@ export const QueryEditor = ({
           />
         </div>
         <div className="flex flex-col">
-          <HeaderButton onClick={onClick} text="">
+          <CustomButton onClick={onClick}>
             <PlayIcon />
-          </HeaderButton>
+          </CustomButton>
 
           <CopyToClipboard text={tabValues ? tabValues[currentTab] : ''}>
-            <HeaderButton text="" theme={ButtonTheme.SECONDARY}>
+            <CustomButton theme={ButtonTheme.SECONDARY}>
               <CopyIcon />
-            </HeaderButton>
+            </CustomButton>
           </CopyToClipboard>
 
-          <HeaderButton
+          <CustomButton
             onClick={onAddNewTab}
-            text=""
             theme={ButtonTheme.SECONDARY}
           >
             <PlusIcon />
-          </HeaderButton>
-          <HeaderButton
+          </CustomButton>
+          <CustomButton
             onClick={deleteTab}
-            text=""
             theme={ButtonTheme.SECONDARY}
           >
             <DeleteIcon />
-          </HeaderButton>
+          </CustomButton>
         </div>
       </div>
       <div className="flex justify-between">
