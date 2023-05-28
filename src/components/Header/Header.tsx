@@ -73,7 +73,9 @@ export const Header: FC = () => {
           onStateChange={({ isOpen }) => setIsBurgerOpen(isOpen)}
         >
           <div>
-            <div className="h-full flex flex-col items-center">{getHeaderButtons()}</div>
+            <div className="h-full flex flex-col items-center">
+              {getHeaderButtons()}
+            </div>
           </div>
         </Menu>
       </>
