@@ -3,7 +3,7 @@ import { graphql } from 'cm6-graphql';
 import { useState } from 'react';
 import { ChevronDownIcon } from '../common/icons/ChevronDownIcon';
 import { ChevronUpIcon } from '../common/icons/ChevronUpIcon';
-import { ButtonTheme, HeaderButton } from '../common/HeaderButton';
+import { ButtonTheme, CustomButton } from '../common/CustomButton';
 import { PlayIcon } from '../common/icons/PlayIcon';
 import { CopyIcon } from '../common/icons/CopyIcon';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
@@ -95,8 +95,8 @@ export const QueryEditor = ({
   };
 
   return (
-    <div className="text-left grow sm:max-w-[50%]">
-      <div className="flex">
+    <div className="text-left border shadow-2xl mx-3 mb-10 rounded-lg shadow-gray-500/50 grow sm:max-w-[50%]">
+      <div className="flex p-3">
         <div
           className="flex overflow-auto w-full sm:h-full"
           style={{ height: isMobile ? '' : 'calc(100vh)' }}
@@ -113,27 +113,29 @@ export const QueryEditor = ({
           />
         </div>
         <div className="flex flex-col">
-          <HeaderButton onClick={onClick} text="">
+          <CustomButton onClick={onClick}>
             <PlayIcon />
-          </HeaderButton>
+          </CustomButton>
 
           <CopyToClipboard text={tabValues ? tabValues[currentTab] : ''}>
-            <HeaderButton text="" theme={ButtonTheme.SECONDARY}>
+            <CustomButton theme={ButtonTheme.SECONDARY}>
               <CopyIcon />
-            </HeaderButton>
+            </CustomButton>
           </CopyToClipboard>
 
-          <HeaderButton
-            onClick={onAddNewTab}
-            text=""
-            theme={ButtonTheme.SECONDARY}
-          >
+          <CustomButton onClick={onAddNewTab} theme={ButtonTheme.SECONDARY}>
             <PlusIcon />
-          </HeaderButton>
+
+          </CustomButton>
+          <CustomButton onClick={deleteTab} theme={ButtonTheme.SECONDARY}>
+            <DeleteIcon />
+          </CustomButton>
+
         </div>
       </div>
-      <div className="flex justify-between">
-        <div className="flex gap-x-5 p-5 text-gray-700">
+      <div className="h-px bg-gray-200"></div>
+      <div className="flex justify-between p-3">
+        <div className="flex gap-x-5 p-3 text-gray-700">
           <button onClick={() => setVariables(true)}>{t('variables')}</button>
           <button onClick={() => setVariables(false)}>{t('headers')}</button>
         </div>
@@ -142,7 +144,7 @@ export const QueryEditor = ({
         </button>
       </div>
       {isOpen && (
-        <div>
+        <div className="p-3">
           {variables ? (
             <div>
               <ReactCodeMirror

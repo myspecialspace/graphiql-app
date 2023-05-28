@@ -51,14 +51,10 @@ export const SigninForm: FC = () => {
           <input
             {...register('email', {
               required: t('errorInputEmail')!,
-              minLength: {
-                value: 8,
-                message: t('error'),
-              },
               pattern: {
                 value:
-                  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&.,])[A-Za-z\d@$!%*#?&.,]{8,}$/,
-                message: t('error'),
+                /^[\w]{1}[\w-.]*@[\w-]+\.[a-z]{2,4}$/i,
+                message: t('errorEmail'),
               },
             })}
             type="email"
